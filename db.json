@@ -1,0 +1,107 @@
+{
+  "categories": [
+    { "id": 1, "name": "documentaire" },
+    { "id": 2, "name": "SCI-FI" },
+    { "id": 3, "name": "bande dessinee" },
+    { "id": 4, "name": "roman" },
+    { "id": 5, "name": "manga" },
+    { "id": 6, "name": "policier" },
+    { "id": 7, "name": "autre" }
+  ],
+
+  "users": [
+    {
+      "id": 1,
+      "pseudo": "LecteurPassion",
+      "dateEntree": "2024-03-15",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "pseudo": "MangaFan",
+      "dateEntree": "2023-11-02",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "pseudo": "AdminMaster",
+      "dateEntree": "2022-01-01",
+      "role": "admin"
+    }
+  ],
+
+  "books": [
+    {
+      "id": 1,
+      "title": "Les Mystères de l’Univers",
+      "categorieId": 1,
+      "auteur": "Jean Dupont",
+      "editeur": "Editions Savoir",
+      "nbPage": 320,
+      "anneeEdition": 2018,
+      "link": "/pdf/mysteres-univers.pdf",
+      "resume": "Cet ouvrage documentaire explore les grandes questions de l’univers : l’origine du cosmos, les trous noirs, la matière noire et les théories scientifiques modernes. L’auteur propose une vulgarisation claire et accessible pour permettre au lecteur de mieux comprendre les mystères qui entourent notre existence. Illustré de schémas explicatifs et d’exemples concrets, ce livre s’adresse aussi bien aux passionnés qu’aux curieux souhaitant approfondir leurs connaissances scientifiques.",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "Chroniques de Mars",
+      "categorieId": 2,
+      "auteur": "Sophie Martin",
+      "editeur": "Galaxie Editions",
+      "nbPage": 410,
+      "anneeEdition": 2021,
+      "link": "/pdf/chroniques-mars.pdf",
+      "resume": "Dans un futur proche, l’humanité a colonisé Mars. Mais la planète rouge cache encore de nombreux secrets. Entre conflits politiques, découvertes scientifiques et tensions humaines, cette fresque de science-fiction plonge le lecteur dans une aventure haletante où chaque décision peut changer le destin de la colonie martienne.",
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "title": "L’Ombre du Silence",
+      "categorieId": 6,
+      "auteur": "Marc Leclerc",
+      "editeur": "Noir Profond",
+      "nbPage": 285,
+      "anneeEdition": 2019,
+      "link": "/pdf/ombre-silence.pdf",
+      "resume": "Un inspecteur solitaire enquête sur une série de disparitions mystérieuses dans une petite ville. Chaque indice semble mener vers une vérité plus sombre encore. Thriller psychologique intense, ce roman policier maintient le suspense jusqu’à la dernière page.",
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "title": "Sakura no Yume",
+      "categorieId": 5,
+      "auteur": "Aiko Tanaka",
+      "editeur": "Tokyo Manga Press",
+      "nbPage": 190,
+      "anneeEdition": 2020,
+      "link": "/pdf/sakura-yume.pdf",
+      "resume": "Ce manga raconte l’histoire d’une jeune lycéenne découvrant qu’elle possède un pouvoir ancestral lié aux esprits des cerisiers en fleurs. Entre amitié, magie et combats épiques, elle devra apprendre à maîtriser ses capacités pour protéger ceux qu’elle aime.",
+      "userId": 2
+    },
+    {
+      "id": 5,
+      "title": "Les Couleurs du Temps",
+      "categorieId": 4,
+      "auteur": "Claire Bernard",
+      "editeur": "Romanesque Editions",
+      "nbPage": 350,
+      "anneeEdition": 2017,
+      "link": "/pdf/couleurs-temps.pdf",
+      "resume": "Une fresque familiale sur trois générations, explorant les thèmes de l’amour, de la mémoire et des choix de vie. Ce roman sensible et émouvant invite le lecteur à réfléchir sur le passage du temps et l’héritage que nous laissons derrière nous.",
+      "userId": 1
+    },
+    {
+      "id": 6,
+      "title": "Les Aventures de Pixelman",
+      "categorieId": 3,
+      "auteur": "Lucas Meyer",
+      "editeur": "BD Factory",
+      "nbPage": 120,
+      "anneeEdition": 2022,
+      "link": "/pdf/pixelman.pdf",
+      "resume": "Pixelman est un super-héros numérique capable de voyager à travers les mondes virtuels. Dans cette bande dessinée dynamique et colorée, il affronte des virus redoutables et protège l’équilibre du cyberespace.",
+      "userId": 3
+    }
+  ]
+}
