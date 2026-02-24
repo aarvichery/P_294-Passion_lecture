@@ -1,18 +1,18 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <img alt="Vue logo" class="logo" src="@/assets/logo.png" width="125" height="125" />
+
+        <RouterLink to="/">Accueil</RouterLink>
+        <RouterLink to="/allbooks">Tous les livres</RouterLink>
+        <RouterLink to="/mybooks">Mes livres</RouterLink>
+
+        <img alt="Vue logo" class="logo" src="@/assets/utilisateur.png" width="125" height="125" />
       </nav>
     </div>
   </header>
@@ -21,65 +21,60 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
+/* ===== HEADER ===== */
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  background-color: #4b5fa9;
+  padding: 10px 40px;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+/* Conteneur principal */
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+/* ===== NAV ===== */
 nav {
+  display: flex;
+  align-items: center;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+/* Logo gauche */
+.logo:first-of-type {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
+/* Liens au centre */
 nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  margin: 0 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
 }
 
-nav a:first-of-type {
-  border: 0;
+/* Effet hover */
+nav a:hover {
+  opacity: 0.7;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+/* Lien actif */
+nav a.router-link-exact-active {
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+/* Icône utilisateur à droite */
+.logo:last-of-type {
+  margin-left: auto;
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  cursor: pointer;
 }
 </style>
