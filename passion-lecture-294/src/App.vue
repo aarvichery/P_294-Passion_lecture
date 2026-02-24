@@ -8,9 +8,11 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <img alt="Vue logo" class="logo" src="@/assets/logo.png" width="125" height="125" />
 
-        <RouterLink to="/">Accueil</RouterLink>
-        <RouterLink to="/allbooks">Tous les livres</RouterLink>
-        <RouterLink to="/mybooks">Mes livres</RouterLink>
+        <div class="links">
+          <RouterLink to="/">Accueil</RouterLink>
+          <RouterLink to="/allbooks">Tous les livres</RouterLink>
+          <RouterLink to="/mybooks">Mes livres</RouterLink>
+        </div>
 
         <img alt="Vue logo" class="logo" src="@/assets/utilisateur.png" width="125" height="125" />
       </nav>
@@ -30,11 +32,12 @@ header {
 /* Conteneur principal */
 .wrapper {
   display: flex;
+  justify-content: space-between; /* espace entre logo gauche, liens et logo droit */
   align-items: center;
-  justify-content: space-between;
+  width: 100%;
 }
 
-/* ===== NAV ===== */
+/* NAV */
 nav {
   display: flex;
   align-items: center;
@@ -49,32 +52,38 @@ nav {
 }
 
 /* Liens au centre */
-nav a {
+.links {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; /* prend tout l’espace central */
+}
+
+.links a {
   margin: 0 20px;
   text-decoration: none;
   color: white;
-  font-size: 18px;
+  font-size: 30px;
   font-weight: 500;
   transition: opacity 0.2s ease;
 }
 
 /* Effet hover */
-nav a:hover {
+.links a:hover {
   opacity: 0.7;
 }
 
 /* Lien actif */
-nav a.router-link-exact-active {
+.links a.router-link-exact-active {
   color: rgb(0, 0, 0);
   text-decoration: underline;
 }
 
 /* Icône utilisateur à droite */
 .logo:last-of-type {
-  margin-left: auto;
   width: 45px;
   height: 45px;
   object-fit: contain;
   cursor: pointer;
+  margin-left: 20px; /* petit espace depuis les liens */
 }
 </style>

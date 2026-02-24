@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { atomtest } from 'globals'
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
   <nav>
     <a>Tout</a>
@@ -17,48 +12,15 @@ import { RouterLink, RouterView } from 'vue-router'
   <h1>Voici tous les livres</h1>
 
   <div class="livres">
-    <div class="livre">
+    <div class="livre" v-for="book in books">
       <img src="../assets/livres.png" />
       <div class="infos">
-        <a>Titre #1</a>
-        <a>Auteur</a>
-        <a>@user183538</a>
-      </div>
-    </div>
-    <div class="livre">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>Titre #2</a>
-        <a>Auteur</a>
-        <a>@user183538</a>
-      </div>
-    </div>
-    <div class="livre">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>Titre #3</a>
-        <a>Auteur</a>
-        <a>@user183538</a>
-      </div>
-    </div>
-    <div class="livre">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>Titre #4</a>
-        <a>Auteur</a>
-        <a>@user183538</a>
-      </div>
-    </div>
-    <div class="livre">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>Titre #5</a>
+        <a>{{ book.title }}</a>
         <a>Auteur</a>
         <a>@user183538</a>
       </div>
     </div>
   </div>
-  <button>Ajouter</button>
   <p class="footer">Elias Veya pl01psa@eduvaud.ch - Aaron Vichery pa84igb@eduvaud.ch</p>
 </template>
 
@@ -193,3 +155,20 @@ button:hover {
   margin-top: 60px;
 }
 </style>
+
+<script>
+export default {
+  data() {
+    return {
+      books: [],
+    }
+  },
+  methods: {
+    async loadBooks() {
+      const response = await fetch('http://localhost:3000/books')
+      const data = await response.json()
+      this.books = data // Stocke les données dans data()
+    },
+  },
+}
+</script>
