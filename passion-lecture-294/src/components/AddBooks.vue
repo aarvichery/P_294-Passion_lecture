@@ -11,29 +11,30 @@ const years = Array.from({ length: 300 }, (v, i) => currentYear - i);
         <div class="image">
             <p>Image de couverture:</p>
             <img src="../assets/livres.png" alt="image de livre">      
+            <input placeholder="lien"></input>
         </div>
         <div class="champsFlex">
             <div class="champs">
                 <p>Titre:</p>
-                <input placeholder="Titre"></input>
+                <input  placeholder="Titre"></input>
             </div>
             <div class="champs">
                 <p>Catégorie:</p>
                 <select >
                 <!-- option avec un v-for qui loup dans toutes les catégories mais qui désactive la catégorie tous car elle ne doit pas etre sélectionner-->
-                <option :hidden="categorie.id === 0" v-for="categorie in categories">{{categorie.name}}</option>
+                <option .number="form.categoryId" :hidden="categorie.id === 0" v-for="categorie in categories">{{categorie.name}}</option>
                 </select>
             </div>
             <div class="champs">
                 <p>Auteur:</p>
                 <select >
                 <option value="" disabled selected hidden>Choisir un Auteur</option>
-                <option v-for="auth in authors">{{auth.firstName}} {{ auth.lastName }}</option>
+                <option  v-for="auth in authors">{{auth.firstName}} {{ auth.lastName }}</option>
                 </select>
             </div>
             <div class="champs">
                 <p>Editeur:</p>
-                <input placeholder="Editeur"></input>
+                <input placeholder="Editor"> </input>
             </div>
             <div class="champs">
                 <p>Année d'édition</p>
@@ -168,24 +169,50 @@ p {
 export default {
   data() {
     return {
-      authors:[],
-      categories:[],
+      authors: [],
+      categories: [],
+      // Objet pour stocker les données du formulaire
+      form: {
+        title: '',
+        categoryId: 0,
+        authorId: 0,
+        editeur:"",
+        nbPage: 0,
+        anneeEdition: 0,
+        link: '',
+        image: '',
+        resume: '',
+        userId: 0,
+      }
     }
   },
   mounted() {
-    ;(this.loadAuthors(), this.loadCategories())
+    this.loadAuthors();
+    this.loadCategories();
   },
   methods: {
     async loadAuthors() {
       const response = await fetch('http://localhost:3000/authors')
-      const data = await response.json()
-      this.authors = data
+      this.authors = await response.json()
     },
-      async loadCategories() {
+    async loadCategories() {
       const response = await fetch('http://localhost:3000/categories')
-      const data = await response.json()
-      this.categories = data
+      this.categories = await response.json()
     },
+    // Méthode pour soumettre le formulaire
+    submitForm() {
+      console.log("Données envoyées :", this.form);
+      alert("Regarde la console (F12) pour voir les données !");
+      
+      // Plus tard, tu pourras ajouter ton fetch POST ici :
+      /*
+      fetch('http://localhost:3000/books', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.form)
+      })
+      */
+    }
   },
 }
 </script>
