@@ -24,7 +24,7 @@ import { RouterLink, RouterView } from 'vue-router'
       :key="book.id"
       v-show="categorieid === 0 || categorieid === book.categorieId"
     >
-      <RouterLink :to="`/book/${book.title}`">
+      <RouterLink :to="`/book/${book.id}`">
         <img src="../assets/livres.png" />
         <div class="infos">
           <a>{{ book.title }}</a>
