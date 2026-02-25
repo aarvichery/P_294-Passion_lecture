@@ -85,6 +85,7 @@
       "editeur": "Editions Savoir",
       "nbPage": 320,
       "anneeEdition": 2018,
+      "image": "../assets/livres.png",
       "link": "/pdf/mysteres-univers.pdf",
       "resume": "Exploration des grandes questions du cosmos, des trous noirs à la matière noire.",
       "userId": 1
@@ -97,6 +98,7 @@
       "editeur": "Galaxie Editions",
       "nbPage": 410,
       "anneeEdition": 2021,
+      "image": "../assets/livres.png",
       "link": "/pdf/chroniques-mars.pdf",
       "resume": "L'humanité face aux secrets politiques et scientifiques de la colonisation martienne.",
       "userId": 2
@@ -109,6 +111,7 @@
       "editeur": "Noir Profond",
       "nbPage": 285,
       "anneeEdition": 2019,
+      "image": "../assets/livres.png",
       "link": "/pdf/ombre-silence.pdf",
       "resume": "Un inspecteur traque la vérité derrière des disparitions dans une ville brumeuse.",
       "userId": 1
@@ -121,6 +124,7 @@
       "editeur": "Tokyo Manga Press",
       "nbPage": 190,
       "anneeEdition": 2020,
+      "image": "../assets/livres.png",
       "link": "/pdf/sakura-yume.pdf",
       "resume": "Une lycéenne découvre un pouvoir ancestral lié aux cerisiers japonais.",
       "userId": 2
@@ -133,6 +137,7 @@
       "editeur": "Romanesque Editions",
       "nbPage": 350,
       "anneeEdition": 2017,
+      "image": "../assets/livres.png",
       "link": "/pdf/couleurs-temps.pdf",
       "resume": "Une fresque familiale émouvante sur l'héritage et la mémoire.",
       "userId": 1
@@ -145,6 +150,7 @@
       "editeur": "BD Factory",
       "nbPage": 120,
       "anneeEdition": 2022,
+      "image": "../assets/livres.png",
       "link": "/pdf/pixelman.pdf",
       "resume": "Le super-héros du cyberespace lutte contre des virus informatiques redoutables.",
       "userId": 3
@@ -157,6 +163,7 @@
       "editeur": "Tech Future",
       "nbPage": 250,
       "anneeEdition": 2023,
+      "image": "../assets/livres.png",
       "link": "/pdf/ia-quotidien.pdf",
       "resume": "Comprendre les enjeux éthiques et techniques de l'intelligence artificielle.",
       "userId": 3
@@ -169,6 +176,7 @@
       "editeur": "Galaxie Editions",
       "nbPage": 520,
       "anneeEdition": 2024,
+      "image": "../assets/livres.png",
       "link": "/pdf/nebuleuse-zero.pdf",
       "resume": "Une station spatiale abandonnée défie les lois de la physique humaine.",
       "userId": 5
@@ -181,6 +189,7 @@
       "editeur": "Tokyo Manga Press",
       "nbPage": 210,
       "anneeEdition": 2022,
+      "image": "../assets/livres.png",
       "link": "/pdf/samourai-ombre.pdf",
       "resume": "Un guerrier solitaire affronte ses démons dans un Japon féodal fantastique.",
       "userId": 2
@@ -193,6 +202,7 @@
       "editeur": "Noir Profond",
       "nbPage": 310,
       "anneeEdition": 2023,
+      "image": "../assets/livres.png",
       "link": "/pdf/secret-falaise.pdf",
       "resume": "Enquête bretonne sur une mort suspecte que tout le village veut oublier.",
       "userId": 7
@@ -205,6 +215,7 @@
       "editeur": "BD Factory",
       "nbPage": 85,
       "anneeEdition": 2024,
+      "image": "../assets/livres.png",
       "link": "/pdf/voyage-icare.pdf",
       "resume": "Réécriture graphique et onirique du célèbre mythe grec.",
       "userId": 4
@@ -217,6 +228,7 @@
       "editeur": "Romanesque Editions",
       "nbPage": 420,
       "anneeEdition": 2015,
+      "image": "../assets/livres.png",
       "link": "/pdf/hiver-roses.pdf",
       "resume": "Une romance tragique au cœur des Années Folles parisiennes.",
       "userId": 1
@@ -229,6 +241,7 @@
       "editeur": "Espace Détente",
       "nbPage": 150,
       "anneeEdition": 2025,
+      "image": "../assets/livres.png",
       "link": "/pdf/rando-lune.pdf",
       "resume": "Un livre inclassable mêlant poésie et conseils de voyage sur la Lune.",
       "userId": 4
@@ -241,6 +254,7 @@
       "editeur": "Miam Editions",
       "nbPage": 200,
       "anneeEdition": 2023,
+      "image": "../assets/livres.png",
       "link": "/pdf/cuisine-multi.pdf",
       "resume": "Recettes impossibles provenant de dimensions alternatives. Très expérimental.",
       "userId": 5

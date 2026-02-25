@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { atomtest } from 'globals'
 import { RouterLink, RouterView } from 'vue-router'
 
@@ -20,13 +20,15 @@ const years = Array.from({ length: 300 }, (v, i) => currentYear - i);
             <div class="champs">
                 <p>Catégorie:</p>
                 <select >
-                <option value="1">Test</option>
+                <!-- option avec un v-for qui loup dans toutes les catégories mais qui désactive la catégorie tous car elle ne doit pas etre sélectionner-->
+                <option :hidden="categorie.id === 0" v-for="categorie in categories">{{categorie.name}}</option>
                 </select>
             </div>
             <div class="champs">
                 <p>Auteur:</p>
                 <select >
                 <option value="" disabled selected hidden>Choisir un Auteur</option>
+                <option v-for="auth in authors">{{auth.firstName}} {{ auth.lastName }}</option>
                 </select>
             </div>
             <div class="champs">
@@ -50,6 +52,10 @@ const years = Array.from({ length: 300 }, (v, i) => currentYear - i);
             <div class="champs">
                 <p>Lien vers extrait:</p>
                 <input placeholder="Https://monextrait.com"></input>
+            </div>
+            <div class="champs">
+                <p>Lien vers image:</p>
+                <input placeholder="c:\inf-toolset"></input>
             </div>
         </div>
           
@@ -157,3 +163,29 @@ p {
     cursor: pointer;
 }
 </style>
+
+<script>
+export default {
+  data() {
+    return {
+      authors:[],
+      categories:[],
+    }
+  },
+  mounted() {
+    ;(this.loadAuthors(), this.loadCategories())
+  },
+  methods: {
+    async loadAuthors() {
+      const response = await fetch('http://localhost:3000/authors')
+      const data = await response.json()
+      this.authors = data
+    },
+      async loadCategories() {
+      const response = await fetch('http://localhost:3000/categories')
+      const data = await response.json()
+      this.categories = data
+    },
+  },
+}
+</script>
