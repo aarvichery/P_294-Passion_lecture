@@ -13,32 +13,32 @@
     {
       "id": 1,
       "pseudo": "LecteurPassion",
-	  "email": "salut@salut.ch",
+      "email": "salut@salut.ch",
       "dateEntree": "2024-03-15",
       "role": "user"
     },
     {
       "id": 2,
       "pseudo": "MangaFan",
-	  "email": "salutation@salut.ch",
+      "email": "salutation@salut.ch",
       "dateEntree": "2023-11-02",
       "role": "user"
     },
     {
       "id": 3,
       "pseudo": "AdminMaster",
-	  "email": "admin@salut.ch",
+      "email": "admin@salut.ch",
       "dateEntree": "2022-01-01",
       "role": "admin"
     },
-	{
+    {
       "id": 4,
       "pseudo": "userJohn",
-	  "email": "user@salut.ch",
+      "email": "user@salut.ch",
       "dateEntree": "2022-01-01",
       "role": "user"
     },
-	{
+    {
       "id": 5,
       "pseudo": "CyberVoyageur",
       "email": "cyber@salut.ch",
@@ -134,7 +134,7 @@
       "resume": "Pixelman est un super-héros numérique capable de voyager à travers les mondes virtuels. Dans cette bande dessinée dynamique et colorée, il affronte des virus redoutables et protège l’équilibre du cyberespace.",
       "userId": 3
     },
-	{
+    {
       "id": 7,
       "title": "L'Intelligence Artificielle au Quotidien",
       "categorieId": 1,
@@ -204,6 +204,18 @@
       "anneeEdition": 2015,
       "link": "/pdf/hiver-roses.pdf",
       "resume": "Une histoire d'amour impossible entre deux artistes dans le Paris des années folles. Un récit poignant sur la passion et le sacrifice.",
+      "userId": 1
+    },
+    {
+      "id": 13,
+      "title": "ABCD",
+      "categorieId": 4,
+      "auteur": "Moi",
+      "editeur": "Editions Savoir",
+      "nbPage": 320,
+      "anneeEdition": 2018,
+      "link": "/pdf/mysteres-univers.pdf",
+      "resume": "Cet ouvrage documentaire explore les grandes questions de l’univers : l’origine du cosmos, les trous noirs, la matière noire et les théories scientifiques modernes. L’auteur propose une vulgarisation claire et accessible pour permettre au lecteur de mieux comprendre les mystères qui entourent notre existence. Illustré de schémas explicatifs et d’exemples concrets, ce livre s’adresse aussi bien aux passionnés qu’aux curieux souhaitant approfondir leurs connaissances scientifiques.",
       "userId": 1
     }
   ]

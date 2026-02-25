@@ -12,11 +12,11 @@
   <h1>Voici tous les livres</h1>
 
   <div class="livres">
-    <div class="livre" v-for="book in books">
+    <div class="livre" v-for="book in books" :key="book.id">
       <img src="../assets/livres.png" />
       <div class="infos">
         <a>{{ book.title }}</a>
-        <a>Auteur</a>
+        <a>{{ book.auteur }}</a>
         <a>@user183538</a>
       </div>
     </div>
@@ -162,6 +162,9 @@ export default {
     return {
       books: [],
     }
+  },
+  mounted() {
+    this.loadBooks()
   },
   methods: {
     async loadBooks() {
