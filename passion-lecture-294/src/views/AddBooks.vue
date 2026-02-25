@@ -1,3 +1,7 @@
+<script setup>
+import AddBooks from '../components/AddBooks.vue'
+</script>
+
 <template>
-  <div class="allbooks"></div>
+  <AddBooks />
 </template>

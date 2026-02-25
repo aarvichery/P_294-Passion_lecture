@@ -68,7 +68,9 @@ import { RouterLink, RouterView } from 'vue-router'
       <img src="../assets/poubelle.png" />
     </div>
   </div>
-  <button>Ajouter</button>
+  <RouterLink to="/addbooks">
+    <button>Ajouter</button>
+  </RouterLink>
   <p class="footer">Elias Veya pl01psa@eduvaud.ch - Aaron Vichery pa84igb@eduvaud.ch</p>
 </template>
 
