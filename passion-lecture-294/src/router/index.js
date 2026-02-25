@@ -24,6 +24,12 @@ const router = createRouter({
       name: 'addbooks',
       component: () => import('../views/AddBooks.vue'),
     },
+    {
+      //Provisoire pour tester dans le futur popup directement dans les views.
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/signupPage.vue'),
+    },
   ],
 })
 
