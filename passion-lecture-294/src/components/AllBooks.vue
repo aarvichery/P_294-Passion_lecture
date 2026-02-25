@@ -1,24 +1,37 @@
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+</script>
 <template>
   <nav>
-    <a>Tout</a>
-    <a>Documentaire</a>
-    <a>SC-FI</a>
-    <a>Bande-dessinée</a>
-    <a>Roman</a>
-    <a>Manga</a>
-    <a>Policier</a>
-    <a>Autre</a>
+    <ul>
+      <li
+        v-for="categorie in categories"
+        :key="categorie.id"
+        style="margin-left: 50px; font-size: 20px"
+      >
+        <a @click="categorieid = categorie.id" :class="{ active: categorieid == categorie.id }">
+          {{ categorie.name }}</a
+        >
+      </li>
+    </ul>
   </nav>
   <h1>Voici tous les livres</h1>
 
   <div class="livres">
-    <div class="livre" v-for="book in books" :key="book.id">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>{{ book.title }}</a>
-        <a>{{ book.auteur }}</a>
-        <a>@user183538</a>
-      </div>
+    <div
+      class="livre"
+      v-for="book in books"
+      :key="book.id"
+      v-show="categorieid === 0 || categorieid === book.categorieId"
+    >
+      <RouterLink :to="`/book/${book.title}`">
+        <img src="../assets/livres.png" />
+        <div class="infos">
+          <a>{{ book.title }}</a>
+          <a>{{ book.auteur }}</a>
+          <a>@user183538</a>
+        </div>
+      </RouterLink>
     </div>
   </div>
   <p class="footer">Elias Veya pl01psa@eduvaud.ch - Aaron Vichery pa84igb@eduvaud.ch</p>
@@ -47,6 +60,20 @@ nav a {
 
 nav a:hover {
   opacity: 0.7;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+  padding-left: 0;
+}
+
+nav ul li a.active {
+  color: black;
+  text-decoration: underline;
 }
 
 /* ===== TITRE ===== */
@@ -161,16 +188,25 @@ export default {
   data() {
     return {
       books: [],
+      categories: [],
+      categorieid: 0,
+      active: false,
+      nbBooksInCat: 0,
     }
   },
   mounted() {
-    this.loadBooks()
+    ;(this.loadBooks(), this.loadCategories())
   },
   methods: {
     async loadBooks() {
       const response = await fetch('http://localhost:3000/books')
       const data = await response.json()
       this.books = data // Stocke les données dans data()
+    },
+    async loadCategories() {
+      const response = await fetch('http://localhost:3000/categories')
+      const data = await response.json()
+      this.categories = data
     },
   },
 }
