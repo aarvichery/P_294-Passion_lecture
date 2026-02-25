@@ -1,12 +1,13 @@
 {
   "categories": [
-    { "id": 1, "name": "documentaire" },
+    { "id": 0, "name": "Tout" },
+    { "id": 1, "name": "Documentaire" },
     { "id": 2, "name": "SCI-FI" },
-    { "id": 3, "name": "bandeDessinee" },
-    { "id": 4, "name": "roman" },
-    { "id": 5, "name": "manga" },
-    { "id": 6, "name": "policier" },
-    { "id": 7, "name": "autre" }
+    { "id": 3, "name": "Bande-Dessinée" },
+    { "id": 4, "name": "Roman" },
+    { "id": 5, "name": "Manga" },
+    { "id": 6, "name": "Policier" },
+    { "id": 7, "name": "Autre" }
   ],
   "authors": [
     { "id": 1, "firstName": "Jean", "lastName": "Dupont" },
