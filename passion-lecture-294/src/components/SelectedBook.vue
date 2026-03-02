@@ -2,7 +2,7 @@
   <div v-if="book">
     <h1>{{ book.title }}</h1>
     <p v-for="author in authors" v-show="book.authorId == author.id">
-      Auteur : {{ author.firstname }}
+      Auteur : {{ author.firstName }} {{ author.lastName }}
     </p>
     <p>Editeur : {{ book.editeur }}</p>
     <p>Catégorie : {{ book.categorieId }}</p>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  props: ['id', 'authorId'], // ← ici tu reçois l'id
+  props: ['id'], // ← ici tu reçois l'id
   data() {
     return {
       book: null,
@@ -29,7 +29,7 @@ export default {
     ;(this.loadBooks(),
       this.loadCategories(),
       this.loadAuthors(),
-      this.getAuthorById(this.authorid))
+      this.getAuthorById(this.authorId))
     fetch(`http://localhost:3000/books/${this.id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -52,7 +52,7 @@ export default {
       const data = await response.json()
       this.authors = data
     },
-    async getAuthorById(authorid) {},
+    async getAuthorById(authorId) {},
   },
 }
 </script>

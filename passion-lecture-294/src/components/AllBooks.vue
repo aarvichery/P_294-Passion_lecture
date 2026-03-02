@@ -28,7 +28,9 @@ import { RouterLink, RouterView } from 'vue-router'
         <img src="../assets/livres.png" />
         <div class="infos">
           <a>{{ book.title }}</a>
-          <a>{{ book.auteur }}</a>
+          <a v-for="author in authors" v-show="book.authorId == author.id">
+            {{ author.firstName }} {{ author.lastName }}
+          </a>
           <a>@user183538</a>
         </div>
       </RouterLink>
@@ -189,13 +191,14 @@ export default {
     return {
       books: [],
       categories: [],
+      authors: [],
       categorieid: 0,
       active: false,
       nbBooksInCat: 0,
     }
   },
   mounted() {
-    ;(this.loadBooks(), this.loadCategories())
+    ;(this.loadBooks(), this.loadCategories(), this.loadAuthors())
   },
   methods: {
     async loadBooks() {
@@ -207,6 +210,11 @@ export default {
       const response = await fetch('http://localhost:3000/categories')
       const data = await response.json()
       this.categories = data
+    },
+    async loadAuthors() {
+      const response = await fetch('http://localhost:3000/authors')
+      const data = await response.json()
+      this.authors = data
     },
   },
 }
