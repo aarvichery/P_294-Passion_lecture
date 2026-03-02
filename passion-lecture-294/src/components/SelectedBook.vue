@@ -4,6 +4,7 @@
     <p v-for="author in authors" v-show="book.authorId == author.id">
       Auteur : {{ author.firstName }} {{ author.lastName }}
     </p>
+
     <p>Editeur : {{ book.editeur }}</p>
     <p>Catégorie : {{ book.categorieId }}</p>
     <p>Nb pages : {{ book.nbPage }}</p>
@@ -29,12 +30,11 @@ export default {
     ;(this.loadBooks(),
       this.loadCategories(),
       this.loadAuthors(),
-      this.getAuthorById(this.authorId))
-    fetch(`http://localhost:3000/books/${this.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        this.book = data
-      })
+      fetch(`http://localhost:3000/books/${this.id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          this.book = data
+        }))
   },
   methods: {
     async loadBooks() {
@@ -52,7 +52,6 @@ export default {
       const data = await response.json()
       this.authors = data
     },
-    async getAuthorById(authorId) {},
   },
 }
 </script>
