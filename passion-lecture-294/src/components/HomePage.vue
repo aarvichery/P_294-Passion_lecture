@@ -19,28 +19,21 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
     quam. Sed lectus du.
   </p>
   <div class="livres">
-    <div>
-      <img src="../assets/livres.png" />
-      <h2>Titre #1</h2>
-    </div>
-    <div>
-      <img src="../assets/livres.png" />
-      <h2>Titre #2</h2>
-    </div>
-    <div>
-      <img src="../assets/livres.png" />
-      <h2>Titre #3</h2>
-    </div>
-    <div>
-      <img src="../assets/livres.png" />
-      <h2>Titre #4</h2>
-    </div>
-    <div>
-      <img src="../assets/livres.png" />
-      <h2>Titre #5</h2>
+    <div class="livre" v-for="book in lastBooks" :key="book.id">
+      <RouterLink :to="`/book/${book.id}`">
+        <img src="../assets/livres.png" />
+        <div class="infos">
+          <a class="book-title">{{ book.title }}</a>
+
+          <a v-for="author in authors" :key="author.id" v-show="book.authorId == author.id">
+            {{ author.firstName }} {{ author.lastName }}
+          </a>
+          <!--Ne pas toucher au point d'interogation sinon crash!-->
+          <a class="user-tag">@{{ selectUser(book)?.pseudo }}</a>
+        </div>
+      </RouterLink>
     </div>
   </div>
-  <p class="footer">Elias Veya pl01psa@eduvaud.ch - Aaron Vichery pa84igb@eduvaud.ch</p>
 </template>
 
 <style scoped>
@@ -64,36 +57,49 @@ p {
 }
 
 /* ====== SECTION LIVRES ====== */
+
 .livres {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 30px;
-  margin: 40px 0;
+  padding: 20px;
 }
 
-/* ====== CARTE LIVRE ====== */
-.livres div {
-  width: 180px;
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  overflow: hidden;
+.livre {
+  width: 200px;
+  background-color: #4b5fa9;
+  border-radius: 12px;
   text-align: center;
-  transition: transform 0.2s ease;
-  cursor: pointer;
+  transition: 0.2s;
 }
 
-.livres div:hover {
-  transform: scale(1.05);
+.livre:hover {
+  transform: translateY(-5px);
 }
 
-/* Image livre */
-.livres img {
+.livre img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
-  background-color: #cfcfcf;
 }
 
+.infos {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.infos a {
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 2px 0;
+}
+.user-tag {
+  font-size: 11px !important;
+  opacity: 0.8;
+}
 /* Bande bleue titre */
 .livres h2 {
   margin: 0;
@@ -113,3 +119,56 @@ p {
   margin-top: 60px;
 }
 </style>
+
+<script>
+export default {
+  data() {
+    return {
+      books: [],
+      categories: [],
+      authors: [],
+      categorieid: 0,
+      searchQuery: '',
+      users: [],
+      userId: 0,
+    }
+  },
+
+  mounted() {
+    this.loadBooks()
+    this.loadCategories()
+    this.loadAuthors()
+    this.loadUsers()
+  },
+  computed: {
+    lastBooks() {
+      return [...this.books].sort((a, b) => b.id - a.id).slice(0, 5)
+    },
+  },
+  methods: {
+    async loadBooks() {
+      const response = await fetch('http://localhost:3000/books')
+      this.books = await response.json()
+    },
+    async loadCategories() {
+      const response = await fetch('http://localhost:3000/categories')
+      this.categories = await response.json()
+    },
+    async loadAuthors() {
+      const response = await fetch('http://localhost:3000/authors')
+      this.authors = await response.json()
+    },
+    async loadUsers() {
+      const response = await fetch('http://localhost:3000/users')
+      this.users = await response.json()
+    },
+
+    //Afficher user qui a add livre
+    selectUser(book) {
+      //Verifie les id de user qui sont les meme que userId dans les livres
+      const user = this.users.find((u) => u.id === book.userId)
+      return user
+    },
+  },
+}
+</script>
