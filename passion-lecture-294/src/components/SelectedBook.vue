@@ -4,8 +4,10 @@
 
     <div class="main-layout">
       <div class="info-column">
-        <div class="image-placeholder"></div>
-        
+        <div class="image-placeholder">
+          <img :src="book.image" />
+        </div>
+
         <div class="details-card">
           <p v-for="author in authors" :key="author.id" v-show="book.authorId == author.id">
             <strong>Auteur :</strong> {{ author.firstName }} {{ author.lastName }}
@@ -13,10 +15,16 @@
           <p><strong>Editeur :</strong> {{ book.editeur }}</p>
           <p><strong>Catégorie :</strong> {{ book.categorieId }}</p>
           <p><strong>Nb pages :</strong> {{ book.nbPage }}</p>
-          
-          <p><strong>Note moyenne :</strong> <span class="stars-yellow">{{ starAverage }}</span></p>
-          
-          <a :href="'https://cdn.bookey.app/files/pdf/book/fr/le-petit-prince.pdf'" target="_blank" class="pdf-link">
+
+          <p>
+            <strong>Note moyenne :</strong> <span class="stars-yellow">{{ starAverage }}</span>
+          </p>
+
+          <a
+            :href="'https://cdn.bookey.app/files/pdf/book/fr/le-petit-prince.pdf'"
+            target="_blank"
+            class="pdf-link"
+          >
             Lien pdf : {{ book.link || 'Consulter le document' }}
           </a>
 
@@ -28,21 +36,22 @@
       </div>
 
       <div class="comments-column">
-        <div 
-          class="bookcomments" 
-          v-for="comment in filteredComments" 
-          :key="comment.id"
-        >
-          <div class="user-info" v-for="user in users" :key="user.id" v-show="user.id == comment.userId">
+        <div class="bookcomments" v-for="comment in filteredComments" :key="comment.id">
+          <div
+            class="user-info"
+            v-for="user in users"
+            :key="user.id"
+            v-show="user.id == comment.userId"
+          >
             <p class="pseudo">{{ user.pseudo }}</p>
           </div>
-          
+
           <p class="stars-rating">{{ renderStars(comment.note) }}</p>
           <p class="comment-text">{{ comment.comment }}</p>
         </div>
-      <RouterLink :to="`/book/${book.id}/addcomment`">
-        <button class="add-button">Ajouter un commentaire</button>
-      </RouterLink>
+        <RouterLink :to="`/book/${book.id}/addcomment`">
+          <button class="add-button">Ajouter un commentaire</button>
+        </RouterLink>
       </div>
     </div>
   </div>
@@ -61,48 +70,48 @@ export default {
   },
   computed: {
     filteredComments() {
-      if (!this.book) return [];
-      return this.comments.filter(c => c.bookId == this.book.id);
+      if (!this.book) return []
+      return this.comments.filter((c) => c.bookId == this.book.id)
     },
 
     starAverage() {
-      const bookComments = this.filteredComments;
-      if (bookComments.length === 0) return this.renderStars(0);
+      const bookComments = this.filteredComments
+      if (bookComments.length === 0) return this.renderStars(0)
 
-      const sum = bookComments.reduce((acc, comment) => acc + comment.note, 0);
-      const average = sum / bookComments.length;
-      return this.renderStars(Math.ceil(average));
-    }
+      const sum = bookComments.reduce((acc, comment) => acc + comment.note, 0)
+      const average = sum / bookComments.length
+      return this.renderStars(Math.ceil(average))
+    },
   },
   mounted() {
-    this.loadAllData();
+    this.loadAllData()
   },
   methods: {
     renderStars(note) {
-      const rating = Math.round(note || 0);
-      const safeRating = Math.min(Math.max(rating, 0), 5); // Entre 0 et 5
-      return '★'.repeat(safeRating) + '☆'.repeat(5 - safeRating);
+      const rating = Math.round(note || 0)
+      const safeRating = Math.min(Math.max(rating, 0), 5) // Entre 0 et 5
+      return '★'.repeat(safeRating) + '☆'.repeat(5 - safeRating)
     },
 
     async loadAllData() {
       try {
-        const resBook = await fetch(`http://localhost:3000/books/${this.id}`);
-        this.book = await resBook.json();
+        const resBook = await fetch(`http://localhost:3000/books/${this.id}`)
+        this.book = await resBook.json()
 
         const [resAuthors, resComments, resUsers] = await Promise.all([
           fetch('http://localhost:3000/authors'),
           fetch('http://localhost:3000/comments'),
-          fetch('http://localhost:3000/users')
-        ]);
+          fetch('http://localhost:3000/users'),
+        ])
 
-        this.authors = await resAuthors.json();
-        this.comments = await resComments.json();
-        this.users = await resUsers.json();
+        this.authors = await resAuthors.json()
+        this.comments = await resComments.json()
+        this.users = await resUsers.json()
       } catch (error) {
-        console.error("Erreur chargement:", error);
+        console.error('Erreur chargement:', error)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -112,7 +121,11 @@ export default {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 h1 {
@@ -141,7 +154,11 @@ h1 {
   height: 320px;
   background-color: #d9d9d9;
   border-radius: 8px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+img {
+  width: 240px;
+  height: 320px;
 }
 
 .details-card {
@@ -156,7 +173,7 @@ h1 {
 .details-card p {
   margin: 8px 0;
   font-size: 0.95rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 5px;
 }
 
@@ -185,7 +202,7 @@ h1 {
   color: white;
   padding: 25px;
   border-radius: 25px; /* Look bulle comme l'image */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease;
 }
 
@@ -204,7 +221,7 @@ h1 {
 }
 
 .pseudo::before {
-  content: "👤";
+  content: '👤';
   background: #1a1a1a;
   width: 38px;
   height: 38px;
@@ -215,7 +232,8 @@ h1 {
   font-size: 1rem;
 }
 
-.stars-rating, .stars-yellow {
+.stars-rating,
+.stars-yellow {
   color: #ffcc00;
   font-size: 1.5rem;
   letter-spacing: 2px;
