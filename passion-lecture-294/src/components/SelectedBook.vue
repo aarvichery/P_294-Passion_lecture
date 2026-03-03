@@ -16,7 +16,7 @@
           
           <p><strong>Note moyenne :</strong> <span class="stars-yellow">{{ starAverage }}</span></p>
           
-          <a :href="book.link" target="_blank" class="pdf-link">
+          <a :href="'https://cdn.bookey.app/files/pdf/book/fr/le-petit-prince.pdf'" target="_blank" class="pdf-link">
             Lien pdf : {{ book.link || 'Consulter le document' }}
           </a>
 
@@ -40,8 +40,9 @@
           <p class="stars-rating">{{ renderStars(comment.note) }}</p>
           <p class="comment-text">{{ comment.comment }}</p>
         </div>
-
+      <RouterLink :to="`/book/${book.id}/addcomment`">
         <button class="add-button">Ajouter un commentaire</button>
+      </RouterLink>
       </div>
     </div>
   </div>

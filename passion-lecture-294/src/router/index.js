@@ -37,6 +37,12 @@ const router = createRouter({
       component: SelectedBook,
       props: true,
     },
+    {
+      path: '/book/:id/addcomment',
+      name: 'addcomment',
+      component: () => import('../views/addComment.vue'),
+      props: true
+    }
   ],
 })
 

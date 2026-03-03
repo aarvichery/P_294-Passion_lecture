@@ -1,29 +1,109 @@
 {
   "categories": [
-    { "id": 0, "name": "Tout" },
-    { "id": 1, "name": "Documentaire" },
-    { "id": 2, "name": "SCI-FI" },
-    { "id": 3, "name": "Bande-Dessinée" },
-    { "id": 4, "name": "Roman" },
-    { "id": 5, "name": "Manga" },
-    { "id": 6, "name": "Policier" },
-    { "id": 7, "name": "Autre" }
+    {
+      "id": 0,
+      "name": "Tout"
+    },
+    {
+      "id": 1,
+      "name": "Documentaire"
+    },
+    {
+      "id": 2,
+      "name": "SCI-FI"
+    },
+    {
+      "id": 3,
+      "name": "Bande-Dessinée"
+    },
+    {
+      "id": 4,
+      "name": "Roman"
+    },
+    {
+      "id": 5,
+      "name": "Manga"
+    },
+    {
+      "id": 6,
+      "name": "Policier"
+    },
+    {
+      "id": 7,
+      "name": "Autre"
+    }
   ],
   "authors": [
-    { "id": 1, "firstName": "Jean", "lastName": "Dupont" },
-    { "id": 2, "firstName": "Sophie", "lastName": "Martin" },
-    { "id": 3, "firstName": "Marc", "lastName": "Leclerc" },
-    { "id": 4, "firstName": "Aiko", "lastName": "Tanaka" },
-    { "id": 5, "firstName": "Claire", "lastName": "Bernard" },
-    { "id": 6, "firstName": "Lucas", "lastName": "Meyer" },
-    { "id": 7, "firstName": "Alan", "lastName": "Turing-Fils" },
-    { "id": 8, "firstName": "Isaac", "lastName": "Asimov Jr" },
-    { "id": 9, "firstName": "Kenji", "lastName": "Yamamoto" },
-    { "id": 10, "firstName": "Agatha", "lastName": "West" },
-    { "id": 11, "firstName": "Hélène", "lastName": "Trace" },
-    { "id": 12, "firstName": "Emilie", "lastName": "Blanc" },
-    { "id": 13, "firstName": "Thomas", "lastName": "Bruit" },
-    { "id": 14, "firstName": "Léa", "lastName": "Petit" }
+    {
+      "id": 1,
+      "firstName": "Jean",
+      "lastName": "Dupont"
+    },
+    {
+      "id": 2,
+      "firstName": "Sophie",
+      "lastName": "Martin"
+    },
+    {
+      "id": 3,
+      "firstName": "Marc",
+      "lastName": "Leclerc"
+    },
+    {
+      "id": 4,
+      "firstName": "Aiko",
+      "lastName": "Tanaka"
+    },
+    {
+      "id": 5,
+      "firstName": "Claire",
+      "lastName": "Bernard"
+    },
+    {
+      "id": 6,
+      "firstName": "Lucas",
+      "lastName": "Meyer"
+    },
+    {
+      "id": 7,
+      "firstName": "Alan",
+      "lastName": "Turing-Fils"
+    },
+    {
+      "id": 8,
+      "firstName": "Isaac",
+      "lastName": "Asimov Jr"
+    },
+    {
+      "id": 9,
+      "firstName": "Kenji",
+      "lastName": "Yamamoto"
+    },
+    {
+      "id": 10,
+      "firstName": "Agatha",
+      "lastName": "West"
+    },
+    {
+      "id": 11,
+      "firstName": "Hélène",
+      "lastName": "Trace"
+    },
+    {
+      "id": 12,
+      "firstName": "Emilie",
+      "lastName": "Blanc"
+    },
+    {
+      "id": 13,
+      "firstName": "Thomas",
+      "lastName": "Bruit"
+    },
+    {
+      "id": 14,
+      "firstName": "Léa",
+      "lastName": "Petit"
+    }
   ],
   "users": [
     {
@@ -263,22 +343,218 @@
   "comments": [
     {
       "id": 1,
-      "comment": "Bien aimé le livre",
-      "userId": "1",
-      "bookId": "5",
-      "note": 4
+      "comment": "Un classique absolu, à lire au moins une fois.",
+      "userId": 1,
+      "bookId": 1,
+      "note": 5
     },
     {
       "id": 2,
-      "comment": "Un peu long au début, mais la fin est incroyable.",
+      "comment": "Un peu déçu par le style, mais l'histoire est solide.",
       "userId": 2,
-      "bookId": 3,
+      "bookId": 1,
       "note": 3
     },
     {
       "id": 3,
-      "comment": "Chef-d'œuvre absolu, je recommande !",
+      "comment": "Incroyable, la fin m'a laissé sans voix.",
+      "userId": 3,
+      "bookId": 2,
+      "note": 5
+    },
+    {
+      "id": 4,
+      "comment": "Je n'ai pas accroché à l'univers.",
       "userId": 4,
+      "bookId": 2,
+      "note": 2
+    },
+    {
+      "id": 5,
+      "comment": "Chef-d'œuvre absolu, je recommande !",
+      "userId": 5,
+      "bookId": 3,
+      "note": 5
+    },
+    {
+      "id": 6,
+      "comment": "Un peu long au début, mais la fin est incroyable.",
+      "userId": 6,
+      "bookId": 3,
+      "note": 4
+    },
+    {
+      "id": 7,
+      "comment": "Une analyse très fine des personnages.",
+      "userId": 7,
+      "bookId": 4,
+      "note": 4
+    },
+    {
+      "id": 8,
+      "comment": "Sympa mais sans plus.",
+      "userId": 1,
+      "bookId": 4,
+      "note": 3
+    },
+    {
+      "id": 9,
+      "comment": "Bien aimé le livre, très instructif.",
+      "userId": 2,
+      "bookId": 5,
+      "note": 4
+    },
+    {
+      "id": 10,
+      "comment": "L'intrigue est prévisible malheureusement.",
+      "userId": 3,
+      "bookId": 5,
+      "note": 2
+    },
+    {
+      "id": 11,
+      "comment": "Une claque visuelle... enfin, textuelle !",
+      "userId": 4,
+      "bookId": 6,
+      "note": 5
+    },
+    {
+      "id": 12,
+      "comment": "J'ai dû le relire deux fois pour tout comprendre.",
+      "userId": 5,
+      "bookId": 6,
+      "note": 4
+    },
+    {
+      "id": 13,
+      "comment": "Pas mon genre de lecture habituel, mais j'ai adoré.",
+      "userId": 6,
+      "bookId": 7,
+      "note": 5
+    },
+    {
+      "id": 14,
+      "comment": "Trop de descriptions à mon goût.",
+      "userId": 7,
+      "bookId": 7,
+      "note": 2
+    },
+    {
+      "id": 15,
+      "comment": "Une aventure épique !",
+      "userId": 1,
+      "bookId": 8,
+      "note": 4
+    },
+    {
+      "id": 16,
+      "comment": "Les dialogues sont savoureux.",
+      "userId": 2,
+      "bookId": 8,
+      "note": 5
+    },
+    {
+      "id": 17,
+      "comment": "Je me suis ennuyé ferme.",
+      "userId": 3,
+      "bookId": 9,
+      "note": 1
+    },
+    {
+      "id": 18,
+      "comment": "Poétique et touchant.",
+      "userId": 4,
+      "bookId": 9,
+      "note": 4
+    },
+    {
+      "id": 19,
+      "comment": "Un rythme haletant du début à la fin.",
+      "userId": 5,
+      "bookId": 10,
+      "note": 5
+    },
+    {
+      "id": 20,
+      "comment": "La traduction laisse à désirer.",
+      "userId": 6,
+      "bookId": 10,
+      "note": 3
+    },
+    {
+      "id": 21,
+      "comment": "Indispensable dans sa bibliothèque.",
+      "userId": 7,
+      "bookId": 11,
+      "note": 5
+    },
+    {
+      "id": 22,
+      "comment": "Un bon moment de détente.",
+      "userId": 1,
+      "bookId": 11,
+      "note": 4
+    },
+    {
+      "id": 23,
+      "comment": "L'auteur se répète un peu.",
+      "userId": 2,
+      "bookId": 12,
+      "note": 3
+    },
+    {
+      "id": 24,
+      "comment": "Original et rafraîchissant.",
+      "userId": 3,
+      "bookId": 12,
+      "note": 5
+    },
+    {
+      "id": 25,
+      "comment": "Le dénouement est un peu bâclé.",
+      "userId": 4,
+      "bookId": 13,
+      "note": 3
+    },
+    {
+      "id": 26,
+      "comment": "J'ai pleuré à la fin.",
+      "userId": 5,
+      "bookId": 13,
+      "note": 5
+    },
+    {
+      "id": 27,
+      "comment": "Très complexe, mais gratifiant.",
+      "userId": 6,
+      "bookId": 14,
+      "note": 4
+    },
+    {
+      "id": 28,
+      "comment": "Une déception après son précédent roman.",
+      "userId": 7,
+      "bookId": 14,
+      "note": 2
+    },
+    {
+      "id": 29,
+      "comment": "Parfait pour les vacances.",
+      "userId": 1,
+      "bookId": 3,
+      "note": 4
+    },
+    {
+      "id": 30,
+      "comment": "Un livre qui fait réfléchir.",
+      "userId": 2,
+      "bookId": 1,
+      "note": 5
+    },
+    {
+      "id": 31,
+      "comment": "Elias t'as pas commit l'ajout des livres",
+      "userId": 1,
       "bookId": 3,
       "note": 5
     }
