@@ -1,112 +1,134 @@
-<script setup lang="ts">
-import { atomtest } from 'globals'
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
   <nav>
-    <a>Tout</a>
-    <a>Documentaire</a>
-    <a>SC-FI</a>
-    <a>Bande-dessinée</a>
-    <a>Roman</a>
-    <a>Manga</a>
-    <a>Policier</a>
-    <a>Autre</a>
+    <ul>
+      <li class="search-item">
+        <input
+          type="text"
+          v-model="searchQuery"
+          placeholder="Rechercher un titre..."
+          class="search-input"
+        />
+      </li>
+
+      <li v-for="categorie in categories" :key="categorie.id">
+        <a @click="categorieid = categorie.id" :class="{ active: categorieid == categorie.id }">
+          {{ categorie.name }}
+        </a>
+      </li>
+    </ul>
   </nav>
-  <h1>Voici vos livres</h1>
+
+  <h1>Voici tous les livres</h1>
 
   <div class="livres">
-    <div class="livre">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>Titre #1</a>
-        <a>Auteur</a>
-        <a>@user183538</a>
-      </div>
-      <img src="../assets/pinceau.png" />
-      <img src="../assets/poubelle.png" />
+    <div class="livre" v-for="book in filteredBooks" :key="book.id" v-show="book.userId == 1">
+      <RouterLink :to="`/book/${book.id}`">
+        <img src="../assets/livres.png" />
+        <div class="infos">
+          <a class="book-title">{{ book.title }}</a>
+
+          <a v-for="author in authors" :key="author.id" v-show="book.authorId == author.id">
+            {{ author.firstName }} {{ author.lastName }}
+          </a>
+
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}</a>
+        </div>
+      </RouterLink>
     </div>
-    <div class="livre">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>Titre #2</a>
-        <a>Auteur</a>
-        <a>@user183538</a>
-      </div>
-      <img src="../assets/pinceau.png" />
-      <img src="../assets/poubelle.png" />
-    </div>
-    <div class="livre">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>Titre #3</a>
-        <a>Auteur</a>
-        <a>@user183538</a>
-      </div>
-      <img src="../assets/pinceau.png" />
-      <img src="../assets/poubelle.png" />
-    </div>
-    <div class="livre">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>Titre #4</a>
-        <a>Auteur</a>
-        <a>@user183538</a>
-      </div>
-      <img src="../assets/pinceau.png" />
-      <img src="../assets/poubelle.png" />
-    </div>
-    <div class="livre">
-      <img src="../assets/livres.png" />
-      <div class="infos">
-        <a>Titre #5</a>
-        <a>Auteur</a>
-        <a>@user183538</a>
-      </div>
-      <img src="../assets/pinceau.png" />
-      <img src="../assets/poubelle.png" />
-    </div>
+
+    <p v-if="filteredBooks.length === 0" style="color: #4b5fa9">Aucun livre trouvé.</p>
   </div>
-  <RouterLink to="/addbooks">
-    <button>Ajouter</button>
-  </RouterLink>
+
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      books: [],
+      categories: [],
+      authors: [],
+      users: [],
+      categorieid: 0,
+      searchQuery: '',
+    }
+  },
+  computed: {
+    filteredBooks() {
+      const query = this.searchQuery.toLowerCase()
+
+      return this.books.filter((book) => {
+        const matchSearch = book.title.toLowerCase().includes(query)
+        const matchCategory = this.categorieid === 0 || book.categorieId === this.categorieid
+        return matchSearch && matchCategory
+      })
+    },
+  },
+  mounted() {
+    this.loadBooks()
+    this.loadCategories()
+    this.loadAuthors()
+    this.loadUsers()
+  },
+  methods: {
+    async loadBooks() {
+      const response = await fetch('http://localhost:3000/books')
+      this.books = await response.json()
+    },
+    async loadCategories() {
+      const response = await fetch('http://localhost:3000/categories')
+      this.categories = await response.json()
+    },
+    async loadAuthors() {
+      const response = await fetch('http://localhost:3000/authors')
+      this.authors = await response.json()
+    },
+    async loadUsers() {
+      const response = await fetch('http://localhost:3000/users')
+      this.users = await response.json()
+    },
+  },
+}
+</script>
+
 <style scoped>
-/* ===== NAV CATEGORIES ===== */
+/* On nettoie la nav pour que tout soit aligné horizontalement */
 nav {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
   background-color: #4b5fa9;
-  padding: 12px 0;
-  border-top-style: solid;
-  border-top-color: #ffffff;
-  border-top-width: 2px;
+  padding: 15px;
+  border-top: 2px solid white;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.search-input {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
 }
 
 nav a {
   color: white;
-  text-decoration: underline;
-  font-weight: 500;
+  text-decoration: none;
+  font-weight: bold;
   cursor: pointer;
-  transition: opacity 0.2s ease;
 }
 
-nav a:hover {
-  opacity: 0.7;
+nav a.active {
+  text-decoration: underline;
+  color: #000000; /* Une couleur différente pour bien voir la catégorie active */
 }
 
-/* ===== TITRE ===== */
-h1 {
-  text-align: center;
-  margin: 40px 0 20px 0;
-  font-size: xx-large;
-  color: #4b5fa9;
-}
-
-/* ===== SECTION LIVRES ===== */
 .livres {
   display: flex;
   justify-content: center;
@@ -115,96 +137,45 @@ h1 {
   padding: 20px;
 }
 
-/* ===== CARTE LIVRE ===== */
-.livres .livre {
+.livre {
   width: 200px;
   background-color: #4b5fa9;
   border-radius: 12px;
-  overflow: hidden;
-  padding-bottom: 15px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease;
-  cursor: pointer;
+  transition: 0.2s;
 }
 
-.livres .livre:hover {
+.livre:hover {
   transform: translateY(-5px);
 }
 
-/* Image couverture */
-.livres .livre img:first-of-type {
+.livre img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  background-color: #ddd;
 }
 
-.livres .livre .infos {
+.infos {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
-.livres .livre .infos a {
-  cursor: pointer;
-}
-
-/* Textes */
-.livres a {
+.infos a {
+  color: white;
   font-size: 14px;
-  margin: 8px 0;
-  font-weight: 500;
-  color: #ffffff;
+  text-decoration: none;
+  margin: 2px 0;
 }
 
-/* Username un peu plus discret */
-.livres h2:nth-of-type(3) {
-  color: #ffffff;
-  font-size: 12px;
+.user-tag {
+  font-size: 11px !important;
+  opacity: 0.8;
 }
 
-/* ===== ICONES ACTION ===== */
-.livres div img:last-of-type,
-.livres div img:nth-last-of-type(2) {
-  width: 22px;
-  height: 22px;
-  margin: 8px 5px 0 5px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.livres div img:last-of-type:hover,
-.livres div img:nth-last-of-type(2):hover {
-  transform: scale(1.2);
-}
-
-button {
-  display: block; /* nécessaire pour que margin-left fonctionne */
-  margin-left: auto; /* pousse le bouton à droite */
-  margin-right: 20px; /* espace par rapport au bord droit */
-  padding: 12px 25px;
-  background-color: #4b5fa9;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #ffffff;
-  padding: 12px 25px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #4b5fa9;
-  border-style: solid;
-  border-color: #4b5fa9;
-}
 .footer {
   text-align: center;
-  font-size: 12px;
+  margin-top: 50px;
   color: #888;
-  background: none;
-  margin-top: 60px;
 }
 </style>
