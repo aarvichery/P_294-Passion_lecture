@@ -22,7 +22,7 @@ const years = Array.from({ length: 300 }, (v, i) => currentYear - i);
                 <p>Catégorie:</p>
                 <select >
                 <!-- option avec un v-for qui loup dans toutes les catégories mais qui désactive la catégorie tous car elle ne doit pas etre sélectionner-->
-                <option .number="form.categoryId" :hidden="categorie.id === 0" v-for="categorie in categories">{{categorie.name}}</option>
+                <option :hidden="categorie.id === 0" v-for="categorie in categories">{{categorie.name}}</option>
                 </select>
             </div>
             <div class="champs">

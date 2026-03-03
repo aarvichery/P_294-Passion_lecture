@@ -30,8 +30,8 @@
           <a v-for="author in authors" :key="author.id" v-show="book.authorId == author.id">
             {{ author.firstName }} {{ author.lastName }}
           </a>
-
-          <a class="user-tag">@user183538</a>
+          <!--Ne pas toucher au "?" sinon crash!!-->
+          <a class="user-tag">@{{ selectUser(book)?.pseudo }}</a>
         </div>
       </RouterLink>
     </div>
@@ -49,6 +49,8 @@ export default {
       authors: [],
       categorieid: 0,
       searchQuery: '',
+      users: [],
+      userId: 0,
     }
   },
   computed: {
@@ -70,6 +72,7 @@ export default {
     this.loadBooks()
     this.loadCategories()
     this.loadAuthors()
+    this.loadUsers()
   },
   methods: {
     async loadBooks() {
@@ -83,6 +86,17 @@ export default {
     async loadAuthors() {
       const response = await fetch('http://localhost:3000/authors')
       this.authors = await response.json()
+    },
+    async loadUsers() {
+      const response = await fetch('http://localhost:3000/users')
+      this.users = await response.json()
+    },
+
+    //Afficher user qui a add livre
+    selectUser(book) {
+      //Verifie les id de user qui sont les meme que userId dans les livres
+      const user = this.users.find((u) => u.id === book.userId)
+      return user
     },
   },
 }
