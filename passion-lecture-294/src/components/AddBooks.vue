@@ -3,98 +3,112 @@ import { atomtest } from 'globals'
 import { RouterLink, RouterView } from 'vue-router'
 
 // On génère la liste des années dynamiquement
-const currentYear = new Date().getFullYear();
-const years = Array.from({ length: 300 }, (v, i) => currentYear - i);
+const currentYear = new Date().getFullYear()
+const years = Array.from({ length: 900 }, (v, i) => currentYear - i)
 </script>
 <template>
-    <div class="flex">
-        <div class="image">
-            <p>Image de couverture:</p>
-            <img src="../assets/livres.png" alt="image de livre">      
-            <input placeholder="lien"></input>
-        </div>
-        <div class="champsFlex">
-            <div class="champs">
-                <p>Titre:</p>
-                <input  placeholder="Titre"></input>
-            </div>
-            <div class="champs">
-                <p>Catégorie:</p>
-                <select >
-                <!-- option avec un v-for qui loup dans toutes les catégories mais qui désactive la catégorie tous car elle ne doit pas etre sélectionner-->
-                <option :hidden="categorie.id === 0" v-for="categorie in categories">{{categorie.name}}</option>
-                </select>
-            </div>
-            <div class="champs">
-                <p>Auteur:</p>
-                <select >
-                <option value="" disabled selected hidden>Choisir un Auteur</option>
-                <option  v-for="auth in authors">{{auth.firstName}} {{ auth.lastName }}</option>
-                </select>
-            </div>
-            <div class="champs">
-                <p>Editeur:</p>
-                <input placeholder="Editor"> </input>
-            </div>
-            <div class="champs">
-                <p>Année d'édition</p>
-                <select>
-                    <option value="" disabled selected hidden>Année</option>
-                    <!--Crée une liste year qui permet de préafficher des dates-->
-                <option v-for="year in years" :key="year" :value="year">
-                {{ year }}
-                </option>
-                </select>
-            </div>
-            <div class="champs">
-                <p>Editeur</p>
-                <input placeholder="Joffrey Resigner"></input>
-            </div>
-            <div class="champs">
-                <p>Lien vers extrait:</p>
-                <input placeholder="Https://monextrait.com"></input>
-            </div>
-            <div class="champs">
-                <p>Lien vers image:</p>
-                <input placeholder="c:\inf-toolset"></input>
-            </div>
-        </div>
-          
+  <div class="flex">
+    <div class="image">
+      <p>Image de couverture:</p>
+      <img src="../assets/livres.png" alt="image de livre" />
     </div>
-    <div class="champs-desc">
-    <p>Résumé:</p> <textarea placeholder="Il était une fois dans chat gpt ou un prompt s'avanturait sans permission..."></textarea>
-</div>
-<div class="save-container">
-    <button class="btn-save">Enregistrer</button>
-</div>
 
+    <div class="champsFlex">
+      <div class="champs">
+        <p>Titre:</p>
+        <input v-model="form.title" placeholder="Titre" />
+      </div>
 
+      <div class="champs">
+        <p>Catégorie:</p>
+        <select v-model="form.categorieId">
+          <option value="" disabled selected hidden>Choisir une catégorie</option>
+          <option
+            v-for="categorie in categories"
+            :key="categorie.id"
+            :value="categorie.id"
+            :hidden="categorie.id === 0"
+          >
+            {{ categorie.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="champs">
+        <p>Auteur:</p>
+        <select v-model="form.authorId">
+          <option value="" disabled selected hidden>Choisir un Auteur</option>
+          <option v-for="auth in authors" :key="auth.id" :value="auth.id">
+            {{ auth.firstName }} {{ auth.lastName }}
+          </option>
+        </select>
+      </div>
+
+      <div class="champs">
+        <p>Editeur:</p>
+        <input v-model="form.editeur" placeholder="Editeur" />
+      </div>
+
+      <div class="champs">
+        <p>Année d'édition</p>
+        <select v-model="form.anneeEdition">
+          <option value="" disabled selected hidden>Année</option>
+          <option v-for="year in years" :key="year" :value="year">
+            {{ year }}
+          </option>
+        </select>
+      </div>
+
+      <div class="champs">
+        <p>Nombre de pages:</p>
+        <input type="number" v-model.number="form.nbPage" placeholder="Ex: 320" />
+      </div>
+
+      <div class="champs">
+        <p>Lien vers extrait:</p>
+        <input v-model="form.link" placeholder="Https://monextrait.com" />
+      </div>
+
+      <div class="champs">
+        <p>Lien vers image:</p>
+        <input v-model="form.image" placeholder="c:\inf-toolset" />
+      </div>
+    </div>
+  </div>
+
+  <div class="champs-desc">
+    <p>Résumé:</p>
+    <textarea v-model="form.resume" placeholder="Résumé du livre..."></textarea>
+  </div>
+
+  <div class="save-container">
+    <button class="btn-save" @click="submitForm">Enregistrer</button>
+  </div>
 </template>
 
 <style scoped>
-
 p {
   color: #4b5fa9;
 }
-.image img{
-    width: 14rem;
-    height: 14rem;
-    filter: drop-shadow(10px 10px 10px grey);
+.image img {
+  width: 14rem;
+  height: 14rem;
+  filter: drop-shadow(10px 10px 10px grey);
 }
-.flex{
-    margin-left: 5rem;
-    display: flex;
-    justify-content: center;
+.flex {
+  margin-left: 5rem;
+  display: flex;
+  justify-content: center;
 }
-.champsFlex{
-    margin-left: 5rem;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 0 20px;
+.champsFlex {
+  margin-left: 5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 20px;
 }
 .champs select option,
 .champs select,
-.champs input{
+.champs input {
   padding: 12px 25px;
   background-color: #4b5fa9;
   color: #ffffff;
@@ -109,7 +123,8 @@ p {
   opacity: 1; /* Nécessaire pour Firefox */
 }
 /* Applique le style à l'input number aussi ! */
-.champs input[type="number"], .champs select {
+.champs input[type='number'],
+.champs select {
   padding: 12px 25px;
   background-color: #4b5fa9;
   color: #ffffff;
@@ -118,50 +133,50 @@ p {
   width: 100%;
 }
 .champs-desc {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centre le bloc résumé horizontalement */
-    width: 100%;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre le bloc résumé horizontalement */
+  width: 100%;
+  margin-top: 20px;
 }
 
 .champs-desc p {
-    width: 70%; /* Aligne le titre sur la largeur du textarea */
-    text-align: left;
+  width: 70%; /* Aligne le titre sur la largeur du textarea */
+  text-align: left;
 }
 
 .champs-desc textarea {
-    width: 70%;           /* Largeur comme sur ton image */
-    height: 70px;        /* Hauteur pour voir plusieurs lignes */
-    padding: 10px;
-    background-color: #4b5fa9;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 18px;  /* Bords très arrondis comme sur le screen */
-    border: none;
-    outline: none;
-    resize: none;         /* Empêche l'utilisateur de redimensionner */
-    font-family: inherit; /* Pour garder la même police que le reste */
+  width: 70%; /* Largeur comme sur ton image */
+  height: 70px; /* Hauteur pour voir plusieurs lignes */
+  padding: 10px;
+  background-color: #4b5fa9;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 18px; /* Bords très arrondis comme sur le screen */
+  border: none;
+  outline: none;
+  resize: none; /* Empêche l'utilisateur de redimensionner */
+  font-family: inherit; /* Pour garder la même police que le reste */
 }
 
 .champs-desc textarea::placeholder {
-    color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 .save-container {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
 }
 
 .btn-save {
-    background-color: #4b5fa9;
-    color: white;
-    border: none;
-    padding: 12px 40px;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
+  background-color: #4b5fa9;
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
 
@@ -174,21 +189,21 @@ export default {
       // Objet pour stocker les données du formulaire
       form: {
         title: '',
-        categoryId: 0,
-        authorId: 0,
-        editeur:"",
-        nbPage: 0,
-        anneeEdition: 0,
-        link: '',
+        categorieId: 1,
+        authorId: 1,
+        editeur: '',
+        nbPage: 2456,
+        anneeEdition: 1879,
         image: '',
+        link: '',
         resume: '',
-        userId: 0,
-      }
+        userId: 1,
+      },
     }
   },
   mounted() {
-    this.loadAuthors();
-    this.loadCategories();
+    this.loadAuthors()
+    this.loadCategories()
   },
   methods: {
     async loadAuthors() {
@@ -199,20 +214,43 @@ export default {
       const response = await fetch('http://localhost:3000/categories')
       this.categories = await response.json()
     },
-    // Méthode pour soumettre le formulaire
-    submitForm() {
-      console.log("Données envoyées :", this.form);
-      alert("Regarde la console (F12) pour voir les données !");
-      
-      // Plus tard, tu pourras ajouter ton fetch POST ici :
-      /*
-      fetch('http://localhost:3000/books', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.form)
-      })
-      */
-    }
+
+    //POST
+
+    async submitForm() {
+      //récupèrer toutes les valeurs du formulaire
+      const values = Object.values(this.form)
+
+      //check que rien n'est vide
+      const isFormIncomplete = values.some((value) => value === '' || value === 0 || value === null)
+
+      if (isFormIncomplete) {
+        alert('Faut tous remplir!!')
+        return
+      }
+
+      // début du post
+      try {
+        const response = await fetch('http://localhost:3000/books', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.form),
+        })
+
+        // Si ok on affiche succes
+        if (response.ok) {
+          alert('Livre enregistré avec succès !')
+
+          //On remmet le user sur la frontpage
+          this.$router.push('/')
+        } else {
+          alert('Erreur serveur : ' + response.status)
+        }
+      } catch (error) {
+        console.error("Erreur lors de l'envoi :", error)
+        alert('Impossible de contacter le serveur.')
+      }
+    },
   },
 }
 </script>
