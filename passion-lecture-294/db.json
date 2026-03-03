@@ -259,5 +259,28 @@
       "resume": "Recettes impossibles provenant de dimensions alternatives. Très expérimental.",
       "userId": 5
     }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "comment": "Bien aimé le livre",
+      "userId": "1",
+      "bookId": "5",
+      "note": 4
+    },
+    {
+      "id": 2,
+      "comment": "Un peu long au début, mais la fin est incroyable.",
+      "userId": 2,
+      "bookId": 3,
+      "note": 3
+    },
+    {
+      "id": 3,
+      "comment": "Chef-d'œuvre absolu, je recommande !",
+      "userId": 4,
+      "bookId": 3,
+      "note": 5
+    }
   ]
 }

@@ -39,7 +39,7 @@
     <p v-if="filteredBooks.length === 0" style="color: #4b5fa9">Aucun livre trouvé.</p>
   </div>
 
-  <p class="footer">Elias Veya - Aaron Vichery</p>
+  <p class="footer">Elias Veya pl01psa@eduvaud.ch - Aaron Vichery pa84igb@eduvaud.ch</p>
 </template>
 
 <script>
@@ -58,12 +58,8 @@ export default {
       const query = this.searchQuery.toLowerCase()
 
       return this.books.filter((book) => {
-        // Filtre 1: La recherche textuelle
         const matchSearch = book.title.toLowerCase().includes(query)
-
-        // Filtre 2: La catégorie (0 = tous)
         const matchCategory = this.categorieid === 0 || book.categorieId === this.categorieid
-
         return matchSearch && matchCategory
       })
     },
