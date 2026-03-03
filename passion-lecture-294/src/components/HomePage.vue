@@ -40,7 +40,6 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
       <h2>Titre #5</h2>
     </div>
   </div>
-  <p class="footer">Elias Veya pl01psa@eduvaud.ch - Aaron Vichery pa84igb@eduvaud.ch</p>
 </template>
 
 <style scoped>

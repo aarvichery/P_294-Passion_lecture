@@ -38,8 +38,6 @@
 
     <p v-if="filteredBooks.length === 0" style="color: #4b5fa9">Aucun livre trouvé.</p>
   </div>
-
-  <p class="footer">Elias Veya - Aaron Vichery</p>
 </template>
 
 <script>
