@@ -338,6 +338,19 @@
       "link": "/pdf/cuisine-multi.pdf",
       "resume": "Recettes impossibles provenant de dimensions alternatives. Très expérimental.",
       "userId": 5
+    },
+    {
+      "title": "Ryan Lauppi au pays des madeleines",
+      "categorieId": 1,
+      "authorId": 13,
+      "editeur": "MaFami",
+      "nbPage": 67,
+      "anneeEdition": 2026,
+      "image": "4",
+      "link": "https://cdn.bookey.app/files/pdf/book/fr/le-petit-prince.pdf",
+      "resume": "Rien",
+      "userId": 1,
+      "id": 15
     }
   ],
   "comments": [
@@ -553,10 +566,10 @@
     },
     {
       "id": 31,
-      "comment": "Elias t'as pas commit l'ajout des livres",
+      "comment": "J'ai pas trop aimé le livre",
       "userId": 1,
       "bookId": 3,
-      "note": 5
+      "note": 2
     }
   ]
 }
