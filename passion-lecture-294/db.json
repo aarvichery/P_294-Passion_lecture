@@ -134,50 +134,80 @@
     {
       "id": 1,
       "pseudo": "LecteurPassion",
+      "firstName": "Alice",
+      "lastName": "Martin",
       "email": "salut@salut.ch",
+      "password": "password123",
       "dateEntree": "2024-03-15",
       "role": "admin"
     },
     {
       "id": 2,
       "pseudo": "MangaFan",
+      "firstName": "Kenji",
+      "lastName": "Tanaka",
       "email": "salutation@salut.ch",
+      "password": "manga_secure!",
       "dateEntree": "2023-11-02",
       "role": "admin"
     },
     {
       "id": 3,
       "pseudo": "AdminMaster",
+      "firstName": "Marc",
+      "lastName": "Dubois",
       "email": "admin@salut.ch",
+      "password": "admin_root_99",
       "dateEntree": "2022-01-01",
       "role": "admin"
     },
     {
       "id": 4,
       "pseudo": "userJohn",
+      "firstName": "John",
+      "lastName": "Doe",
       "email": "user@salut.ch",
+      "password": "qwerty_john",
       "dateEntree": "2022-01-01",
       "role": "admin"
     },
     {
       "id": 5,
       "pseudo": "CyberVoyageur",
+      "firstName": "Thomas",
+      "lastName": "Durand",
       "email": "cyber@salut.ch",
+      "password": "cyber_pass_2026",
       "dateEntree": "2024-01-10",
       "role": "admin"
     },
     {
       "id": 6,
       "pseudo": "BibiTheque",
+      "firstName": "Sophie",
+      "lastName": "Lefebvre",
       "email": "info@bibli.ch",
+      "password": "book_lover_06",
       "dateEntree": "2023-05-20",
       "role": "admin"
     },
     {
       "id": 7,
       "pseudo": "EnqueteurDuDimanche",
+      "firstName": "Hercule",
+      "lastName": "Petit",
       "email": "detective@salut.ch",
+      "password": "loupe_et_pipe",
       "dateEntree": "2024-02-28",
+      "role": "admin"
+    },
+    {
+      "id": 8,
+      "firstname": "Aaron",
+      "lastname": "Vichery",
+      "email": "l@l.com",
+      "password": "123456787542",
+      "dateEntree": "2026-03-04",
       "role": "admin"
     }
   ],

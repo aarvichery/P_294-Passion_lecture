@@ -54,6 +54,11 @@ const router = createRouter({
       component: () => import('../views/EditBooks.vue'),
       props: true,
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/loginPage.vue'),
+    }
   ],
 })
 

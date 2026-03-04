@@ -22,21 +22,13 @@ import { RouterLink, RouterView } from 'vue-router'
 
         <div class="modal-inputs">
           <form @submit.prevent="submitComment">
-          <input type="text" placeholder="Name..." v-model="form.lastname" required/>
-          <input type="text" placeholder="Firstname..." v-model="form.firstname" required/>
-          <input type="email" placeholder="Email..." v-model="form.email" required/>
-          <input type="password" placeholder="Password..." v-model="form.password" required/>
+          <input type="email" placeholder="Email..." required/>
+          <input type="password" placeholder="Password..." required/>
           <button type="submit" class="modal-submit-btn">Rejoignez-nous!</button>
           </form>
         </div>
-
-        <div class="modal-footer">
-          <RouterLink to="/login">
-          <a class="modal-login-text">Se connecter...</a>
-          </RouterLink>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -58,36 +50,6 @@ export default {
     }
   },
   methods: {
-    async submitComment() { 
-      
-      try {
-        const response = await fetch('http://localhost:3000/users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(this.form)
-        });
-
-        if (response.ok) {
-          const createdComment = await response.json();
-          
-          // Reset du formulaire
-          this.form.firstName = "";
-          this.form.lastName = "";
-          this.form.lastname = "",
-          this.form.email = "",
-          this.form.password = "",
-          this.$router.push(`/`)
-          
-          // Optionnel : rediriger l'utilisateur ou rafraîchir la liste
-        } else {
-          alert("Erreur serveur : " + response.status);
-        }
-      } catch (error) {
-        console.error("Erreur réseau :", error);
-      }
-    }
   },
 }
 </script>
