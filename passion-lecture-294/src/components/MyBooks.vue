@@ -29,10 +29,11 @@
 
           <a v-for="author in authors" :key="author.id" v-show="book.authorId == author.id">
             {{ author.firstName }} {{ author.lastName }}
-            
           </a>
 
-          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}</a>
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId"
+            >@{{ user.pseudo }}</a
+          >
           <div>
             <img src="../assets/pinceau.png" />
             <img src="../assets/poubelle.png" />
@@ -41,12 +42,11 @@
       </RouterLink>
     </div>
     <RouterLink to="/addbooks">
-    <button>Ajouter</button>
-  </RouterLink>
+      <button>Ajouter</button>
+    </RouterLink>
 
     <p v-if="filteredBooks.length === 0" style="color: #4b5fa9">Aucun livre trouvé.</p>
   </div>
-
 </template>
 
 <script>
@@ -192,7 +192,7 @@ nav a.active {
 
 /* Les icônes moins grosses (Pinceau et Poubelle) */
 .infos div img {
-  width: 30px;  /* Taille encore plus petite pour la discrétion */
+  width: 30px; /* Taille encore plus petite pour la discrétion */
   height: 30px;
   cursor: pointer;
   filter: brightness(0) invert(1);
@@ -207,7 +207,7 @@ nav a.active {
 /* --- LE GROS BOUTON AJOUTER (TOUT EN BAS) --- */
 /* On cible le RouterLink qui entoure le bouton pour le forcer à aller à la ligne */
 .livres > a {
-  width: 100%; 
+  width: 100%;
   display: flex;
   justify-content: center;
   text-decoration: none;
@@ -217,13 +217,13 @@ button {
   background-color: #4b5fa9;
   color: white;
   border: none;
-  padding: 22px 80px;      /* Très gros bouton */
+  padding: 22px 80px; /* Très gros bouton */
   border-radius: 50px;
   font-size: 1.3rem;
   font-weight: 900;
   letter-spacing: 1px;
   cursor: pointer;
-  margin:0;          /* Espace au-dessus et en dessous */
+  margin: 0; /* Espace au-dessus et en dessous */
   box-shadow: 0 rgba(75, 95, 169, 0.3);
   transition: all 0.3s ease;
 }
