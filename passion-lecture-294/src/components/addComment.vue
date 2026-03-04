@@ -76,7 +76,7 @@ export default {
 <style scoped>
 /* Centrage vertical et horizontal sur toute la page */
 .rate  {
-    color:#ffcc00 
+    color:#ffcc00
 }
 .container-center {
   display: flex;
