@@ -31,7 +31,7 @@
             {{ author.firstName }} {{ author.lastName }}
           </a>
 
-          <a class="user-tag">@user183538</a>
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}</a>
         </div>
       </RouterLink>
     </div>
@@ -39,7 +39,6 @@
     <p v-if="filteredBooks.length === 0" style="color: #4b5fa9">Aucun livre trouvé.</p>
   </div>
 
-  <p class="footer">Elias Veya pl01psa@eduvaud.ch - Aaron Vichery pa84igb@eduvaud.ch</p>
 </template>
 
 <script>
@@ -49,6 +48,7 @@ export default {
       books: [],
       categories: [],
       authors: [],
+      users: [],
       categorieid: 0,
       searchQuery: '',
     }
@@ -68,6 +68,7 @@ export default {
     this.loadBooks()
     this.loadCategories()
     this.loadAuthors()
+    this.loadUsers()
   },
   methods: {
     async loadBooks() {
@@ -81,6 +82,10 @@ export default {
     async loadAuthors() {
       const response = await fetch('http://localhost:3000/authors')
       this.authors = await response.json()
+    },
+    async loadUsers() {
+      const response = await fetch('http://localhost:3000/users')
+      this.users = await response.json()
     },
   },
 }

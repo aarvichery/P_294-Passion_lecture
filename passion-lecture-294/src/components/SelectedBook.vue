@@ -49,7 +49,7 @@
           <p class="stars-rating">{{ renderStars(comment.note) }}</p>
           <p class="comment-text">{{ comment.comment }}</p>
         </div>
-        <RouterLink :to="`/book/${book.id}/addcomment`">
+        <RouterLink :to="`/books/${book.id}/addcomment`">
           <button class="add-button">Ajouter un commentaire</button>
         </RouterLink>
       </div>
