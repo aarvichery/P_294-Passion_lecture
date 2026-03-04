@@ -23,7 +23,7 @@
   <div class="livres">
     <div class="livre" v-for="book in filteredBooks" :key="book.id">
       <RouterLink :to="`/book/${book.id}`">
-        <img src="../assets/livres.png" />
+        <img :src="book.image" />
         <div class="infos">
           <a class="book-title">{{ book.title }}</a>
 
