@@ -351,6 +351,19 @@
       "resume": "Rien",
       "userId": 1,
       "id": 15
+    },
+    {
+      "title": "h",
+      "categorieId": 3,
+      "authorId": 4,
+      "editeur": "llk",
+      "nbPage": 574,
+      "anneeEdition": 1895,
+      "image": "/livres/livres.png",
+      "link": "/pdf/ia-quotidien.pdf",
+      "resume": "kfjjgfhghg",
+      "userId": 1,
+      "id": 16
     }
   ],
   "comments": [
