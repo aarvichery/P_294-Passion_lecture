@@ -33,7 +33,9 @@
 
           <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}
             <div v-show="user.role == 'admin'">
-            <img src="../assets/pinceau.png" />
+            <RouterLink :to="`/book/${book.id}/editbook`">
+              <img src="../assets/pinceau.png" />
+            </RouterLink>
             <img src="../assets/poubelle.png" />
           </div>
         </a>
