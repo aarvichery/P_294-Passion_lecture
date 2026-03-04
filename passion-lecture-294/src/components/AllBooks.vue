@@ -31,7 +31,13 @@
             {{ author.firstName }} {{ author.lastName }}
           </a>
 
-          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}</a>
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}
+            <div v-show="user.role == 'admin'">
+            <img src="../assets/pinceau.png" />
+            <img src="../assets/poubelle.png" />
+          </div>
+        </a>
+        
         </div>
       </RouterLink>
     </div>
@@ -171,6 +177,38 @@ nav a.active {
 .user-tag {
   font-size: 11px !important;
   opacity: 0.8;
+}
+
+.infos div {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Les icônes moins grosses (Pinceau et Poubelle) */
+.infos div img {
+  width: 30px; /* Taille encore plus petite pour la discrétion */
+  height: 30px;
+  cursor: pointer;
+  filter: brightness(0) invert(1);
+  transition: 0.2s;
+}
+
+.infos div img:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+/* --- LE GROS BOUTON AJOUTER (TOUT EN BAS) --- */
+/* On cible le RouterLink qui entoure le bouton pour le forcer à aller à la ligne */
+.livres > a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .footer {

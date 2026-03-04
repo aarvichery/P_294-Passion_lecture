@@ -136,14 +136,14 @@
       "pseudo": "LecteurPassion",
       "email": "salut@salut.ch",
       "dateEntree": "2024-03-15",
-      "role": "user"
+      "role": "admin"
     },
     {
       "id": 2,
       "pseudo": "MangaFan",
       "email": "salutation@salut.ch",
       "dateEntree": "2023-11-02",
-      "role": "user"
+      "role": "admin"
     },
     {
       "id": 3,
@@ -157,14 +157,14 @@
       "pseudo": "userJohn",
       "email": "user@salut.ch",
       "dateEntree": "2022-01-01",
-      "role": "user"
+      "role": "admin"
     },
     {
       "id": 5,
       "pseudo": "CyberVoyageur",
       "email": "cyber@salut.ch",
       "dateEntree": "2024-01-10",
-      "role": "user"
+      "role": "admin"
     },
     {
       "id": 6,
@@ -178,7 +178,7 @@
       "pseudo": "EnqueteurDuDimanche",
       "email": "detective@salut.ch",
       "dateEntree": "2024-02-28",
-      "role": "user"
+      "role": "admin"
     }
   ],
   "books": [
