@@ -42,6 +42,11 @@ const router = createRouter({
       name: 'addcomment',
       component: () => import('../views/addComment.vue'),
       props: true
+    },
+    {
+      path: '/addauthor',
+      name: 'addAuthor',
+      component: () => import('../views/addAuthor.vue')
     }
   ],
 })

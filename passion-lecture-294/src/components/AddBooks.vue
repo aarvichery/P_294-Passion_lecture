@@ -42,6 +42,9 @@ const years = Array.from({ length: 900 }, (v, i) => currentYear - i)
             {{ auth.firstName }} {{ auth.lastName }}
           </option>
         </select>
+        <RouterLink to="/addauthor">
+          <button>Ajouter</button>
+        </RouterLink>
       </div>
 
       <div class="champs">
@@ -100,6 +103,17 @@ p {
   display: flex;
   justify-content: center;
 }
+
+.champs button {
+  background-color: #4b5fa9;
+  color: white;
+  border-color:#ffffff;
+  padding: 12px 40px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .champsFlex {
   margin-left: 5rem;
   display: grid;
