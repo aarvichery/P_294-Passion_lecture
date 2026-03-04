@@ -35,7 +35,9 @@
             >@{{ user.pseudo }}</a
           >
           <div>
-            <img src="../assets/pinceau.png" />
+            <RouterLink :to="`/book/${book.id}/editbook`">
+              <img src="../assets/pinceau.png" />
+            </RouterLink>
             <img src="../assets/poubelle.png" />
           </div>
         </div>

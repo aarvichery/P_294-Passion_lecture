@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <div class="modal-overlay">
     <div class="modal-card">
       <div class="modal-left">
-        <img src="../assets/livres.png" alt="Stack of books" />
+        <img src="/livres/livres.png" alt="Stack of books" />
       </div>
 
       <div class="modal-right">

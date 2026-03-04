@@ -41,13 +41,19 @@ const router = createRouter({
       path: '/book/:id/addcomment',
       name: 'addcomment',
       component: () => import('../views/addComment.vue'),
-      props: true
+      props: true,
     },
     {
       path: '/addauthor',
       name: 'addAuthor',
-      component: () => import('../views/addAuthor.vue')
-    }
+      component: () => import('../views/addAuthor.vue'),
+    },
+    {
+      path: '/book/:id/editbook',
+      name: 'editbook',
+      component: () => import('../views/EditBooks.vue'),
+      props: true,
+    },
   ],
 })
 
