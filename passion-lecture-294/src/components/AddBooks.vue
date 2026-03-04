@@ -10,7 +10,7 @@ const years = Array.from({ length: 900 }, (v, i) => currentYear - i)
   <div class="flex">
     <div class="image">
       <p>Image de couverture:</p>
-      <img src="../assets/livres.png" alt="image de livre" />
+      <img src="/livres/livres.png" alt="image de livre" />
     </div>
 
     <div class="champsFlex">

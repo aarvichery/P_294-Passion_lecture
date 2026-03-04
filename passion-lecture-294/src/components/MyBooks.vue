@@ -23,7 +23,7 @@
   <div class="livres">
     <div class="livre" v-for="book in filteredBooks" :key="book.id" v-show="book.userId == 1">
       <RouterLink :to="`/book/${book.id}`">
-        <img src="../assets/livres.png" />
+        <img :src="book.image" />
         <div class="infos">
           <a class="book-title">{{ book.title }}</a>
 
@@ -31,14 +31,15 @@
             {{ author.firstName }} {{ author.lastName }}
           </a>
 
-          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}</a>
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId"
+            >@{{ user.pseudo }}</a
+          >
         </div>
       </RouterLink>
     </div>
 
     <p v-if="filteredBooks.length === 0" style="color: #4b5fa9">Aucun livre trouvé.</p>
   </div>
-
 </template>
 
 <script>
