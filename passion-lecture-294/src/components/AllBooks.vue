@@ -31,7 +31,13 @@
             {{ author.firstName }} {{ author.lastName }}
           </a>
 
-          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}</a>
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}
+            <div v-show="user.role == 'admin'">
+            <img src="../assets/pinceau.png" />
+            <img src="../assets/poubelle.png" />
+          </div>
+        </a>
+        
         </div>
       </RouterLink>
     </div>
