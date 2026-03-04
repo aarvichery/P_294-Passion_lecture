@@ -38,7 +38,8 @@
             <RouterLink :to="`/book/${book.id}/editbook`">
               <img src="../assets/pinceau.png" />
             </RouterLink>
-            <img src="../assets/poubelle.png" />
+
+            <img src="../assets/poubelle.png" @click="deleteBook(book.id)" />
           </div>
         </div>
       </RouterLink>
@@ -96,6 +97,26 @@ export default {
     async loadUsers() {
       const response = await fetch('http://localhost:3000/users')
       this.users = await response.json()
+    },
+
+    async deleteBook(id) {
+      //demandé si l'utilisateur est sur
+      if (confirm('Es-tu sûr de vouloir supprimer ce livre ?')) {
+        try {
+          const response = await fetch(`http://localhost:3000/books/${id}`, {
+            method: 'DELETE',
+          })
+
+          if (response.ok) {
+            //Rafraichir books
+            this.$router.push('/mybooks')
+          } else {
+            alert('Erreur lors de la suppression sur le serveur.')
+          }
+        } catch (error) {
+          alert('Impossible de contacter le serveur.')
+        }
+      }
     },
   },
 }

@@ -31,20 +31,22 @@
             {{ author.firstName }} {{ author.lastName }}
           </a>
 
-          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId"
+            >@{{ user.pseudo }}
+
             <div v-show="user.role == 'admin'">
-            <img src="../assets/pinceau.png" />
-            <img src="../assets/poubelle.png" />
-          </div>
-        </a>
-        
+              <RouterLink :to="`/book/${book.id}/editbook`">
+                <img src="../assets/pinceau.png" />
+              </RouterLink>
+              <img src="../assets/poubelle.png" @click="deleteBook(book.id)" />
+            </div>
+          </a>
         </div>
       </RouterLink>
     </div>
 
     <p v-if="filteredBooks.length === 0" style="color: #4b5fa9">Aucun livre trouvé.</p>
   </div>
-
 </template>
 
 <script>
@@ -92,6 +94,26 @@ export default {
     async loadUsers() {
       const response = await fetch('http://localhost:3000/users')
       this.users = await response.json()
+    },
+
+    async deleteBook(id) {
+      //demandé si l'utilisateur est sur
+      if (confirm('Es-tu sûr de vouloir supprimer ce livre ?')) {
+        try {
+          const response = await fetch(`http://localhost:3000/books/${id}`, {
+            method: 'DELETE',
+          })
+
+          if (response.ok) {
+            //Rafraichir books
+            this.$router.push('/allbooks')
+          } else {
+            alert('Erreur lors de la suppression sur le serveur.')
+          }
+        } catch (error) {
+          alert('Impossible de contacter le serveur.')
+        }
+      }
     },
   },
 }
