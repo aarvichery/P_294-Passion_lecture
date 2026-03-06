@@ -1,6 +1,18 @@
 <template>
-  <div class="user-container">
-    <div class="user-card" v-for="user in users" v-show="user.id == this.id" :key="user.id">
+  <div class="user-container" v-for="user in users" v-show="user.id == this.id" :key="user.id">
+    <div class="user-actions" v-show="user.role === 'admin'">
+      <RouterLink to="/allbooks">
+        <img src="../assets/livre-ouvert.png" title="Voir mes livres" />
+      </RouterLink>
+
+      <img
+        src="../assets/poubelle-n.png"
+        title="Supprimer le compte"
+        @click="deleteUser(user.id)"
+      />
+    </div>
+
+    <div class="user-card">
       <div class="user-avatar-zone">
         <img alt="User icon" class="user-logo" src="@/assets/utilisateur.png" />
       </div>
@@ -54,6 +66,41 @@ export default {
 </script>
 
 <style scoped>
+/* Conteneur des icônes (livre et poubelle) */
+.user-actions {
+  display: flex;
+  flex-direction: column; /* Aligne les icônes verticalement */
+  gap: 20px;
+  margin-right: 20px; /* Espace entre les icônes et la carte */
+}
+
+/* Style commun pour les images d'action */
+.user-actions img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 15px;
+  box-shadow: 4px 4px 0px #4b5fa9; /* Ombre décalée style rétro/BD */
+}
+
+/* Effet au survol */
+.user-actions img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+  background-color: #e8eeff;
+}
+
+/* Ajustement spécifique pour la poubelle (rouge discret au survol ?) */
+.user-actions img[src*='poubelle']:hover {
+  border-color: #a94b4b;
+  box-shadow: 4px 4px 0px #a94b4b;
+}
 /* Conteneur principal pour centrer la carte */
 .user-container {
   display: flex;
