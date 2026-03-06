@@ -32,7 +32,9 @@
           </a>
 
           <a class="user-tag" v-for="user in users" v-show="user.id == book.userId"
-            >@{{ user.pseudo }}</a
+            ><RouterLink :to="`/user/${user.id}`"
+              ><a>@{{ user.pseudo }}</a>
+            </RouterLink></a
           >
           <div>
             <RouterLink :to="`/book/${book.id}/editbook`">

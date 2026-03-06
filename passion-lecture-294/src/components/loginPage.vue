@@ -22,10 +22,15 @@ import { RouterLink, RouterView } from 'vue-router'
 
         <div class="modal-inputs">
           <form @submit.prevent="submitComment">
-          <input type="email" placeholder="Email..." required/>
-          <input type="password" placeholder="Password..." required/>
-          <button type="submit" class="modal-submit-btn">Rejoignez-nous!</button>
+            <input type="email" placeholder="Email..." required />
+            <input type="password" placeholder="Password..." required />
+            <button type="submit" class="modal-submit-btn">Rejoignez-nous!</button>
           </form>
+        </div>
+        <div class="modal-footer">
+          <RouterLink to="/signup">
+            <a class="modal-login-text">S'inscrire ...</a>
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -43,14 +48,12 @@ export default {
         email: '',
         password: '',
         dateEntree: new Date().toISOString().split('T')[0],
-        role: 'admin'
-
+        role: 'admin',
       },
-      comments: []
+      comments: [],
     }
   },
-  methods: {
-  },
+  methods: {},
 }
 </script>
 

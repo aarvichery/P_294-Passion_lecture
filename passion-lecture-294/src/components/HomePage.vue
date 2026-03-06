@@ -10,14 +10,33 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
 </script>
 
 <template>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend bibendum risus id
-    pharetra. Aliquam erat volutpat. In consectetur turpis sit amet tellus commodo, quis sodales
-    magna accumsan. Fusce iaculis, elit at malesuada facilisis, ligula metus feugiat turpis, quis
-    molestie erat sem in sapien. Suspendisse feugiat id arcu ut consequat. Aliquam arcu orci,
-    molestie at pulvinar ac, tempus ac nunc. Nullam sed lorem tincidunt, varius nisi vel, rhoncus
-    quam. Sed lectus du.
-  </p>
+  <section class="presentation">
+    <h1>Bienvenue sur Passion Lecture 294</h1>
+    <p class="intro">
+      Votre nouvel espace numérique dédié à l’univers du livre. Que vous soyez un dévoreur de
+      romans, un amateur de bandes dessinées ou à la recherche d'ouvrages académiques, notre
+      plateforme vous permet d’explorer notre catalogue en un clic.
+    </p>
+
+    <ul class="features">
+      <li>
+        <strong>Explorez :</strong> Parcourez des milliers de références par genre, auteur ou
+        nouveautés.
+      </li>
+      <li>
+        <strong>Gérez :</strong> Suivez vos emprunts en cours et gérez vos réservations en temps
+        réel.
+      </li>
+      <li>
+        <strong>Partagez :</strong> Rejoignez une communauté de lecteurs passionnés et découvrez vos
+        prochains coups de cœur.
+      </li>
+    </ul>
+
+    <p class="cta">
+      <em>Plongez dans l'aventure dès maintenant.</em>
+    </p>
+  </section>
   <div class="livres">
     <div class="livre" v-for="book in lastBooks" :key="book.id">
       <RouterLink :to="`/book/${book.id}`">
@@ -29,7 +48,16 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
             {{ author.firstName }} {{ author.lastName }}
           </a>
           <!--Ne pas toucher au point d'interogation sinon crash!-->
-          <a class="user-tag">@{{ selectUser(book)?.pseudo }}</a>
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId"
+            ><RouterLink :to="`/user/${user.id}`"
+              ><a>@{{ user.pseudo }}</a>
+            </RouterLink>
+            <div v-show="user.role == 'admin'" class="informations">
+              <RouterLink :to="`/book/${book.id}/editbook`">
+                <img src="../assets/pinceau.png" />
+              </RouterLink>
+              <img src="../assets/poubelle.png" /></div
+          ></a>
         </div>
       </RouterLink>
     </div>
@@ -45,7 +73,7 @@ body {
 }
 
 /* ====== TEXTE INTRO ====== */
-p {
+.presentation {
   max-width: 800px;
   margin: 40px auto;
   background-color: #4b5fa9;
@@ -54,6 +82,20 @@ p {
   border-radius: 10px;
   text-align: left;
   line-height: 1.6;
+}
+
+/* Les icônes moins grosses (Pinceau et Poubelle) */
+.infos div img {
+  width: 30px; /* Taille encore plus petite pour la discrétion */
+  height: 30px;
+  cursor: pointer;
+  filter: brightness(0) invert(1);
+  transition: 0.2s;
+}
+
+.infos div img:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
 }
 
 /* ====== SECTION LIVRES ====== */
@@ -100,6 +142,16 @@ p {
   font-size: 11px !important;
   opacity: 0.8;
 }
+
+.informations {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 /* Bande bleue titre */
 .livres h2 {
   margin: 0;

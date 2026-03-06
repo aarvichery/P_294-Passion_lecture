@@ -38,8 +38,8 @@ const router = createRouter({
       props: true,
     },
     {
-      path: '/book/:id/addcomment',
-      name: 'addcomment',
+      path: '/books/:id/addcomment',
+      name: 'addComment',
       component: () => import('../views/addComment.vue'),
       props: true,
     },
@@ -58,7 +58,13 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('../views/loginPage.vue'),
-    }
+    },
+    {
+      path: '/user/:id',
+      name: 'showUser',
+      component: () => import('../views/showUser.vue'),
+      props: true,
+    },
   ],
 })
 

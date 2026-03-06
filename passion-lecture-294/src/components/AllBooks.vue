@@ -31,22 +31,23 @@
             {{ author.firstName }} {{ author.lastName }}
           </a>
 
-          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">@{{ user.pseudo }}
-            <div v-show="user.role == 'admin'">
-            <RouterLink :to="`/book/${book.id}/editbook`">
-              <img src="../assets/pinceau.png" />
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">
+            <RouterLink :to="`/user/${user.id}`"
+              ><a>@{{ user.pseudo }}</a>
             </RouterLink>
-            <img src="../assets/poubelle.png" />
-          </div>
-        </a>
-        
+            <div v-show="user.role == 'admin'">
+              <RouterLink :to="`/book/${book.id}/editbook`">
+                <img src="../assets/pinceau.png" />
+              </RouterLink>
+              <img src="../assets/poubelle.png" />
+            </div>
+          </a>
         </div>
       </RouterLink>
     </div>
 
     <p v-if="filteredBooks.length === 0" style="color: #4b5fa9">Aucun livre trouvé.</p>
   </div>
-
 </template>
 
 <script>
