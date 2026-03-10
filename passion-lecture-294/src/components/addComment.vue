@@ -3,7 +3,7 @@
     <form @submit.prevent="submitComment" class="comment-form">
       <label for="rating">Note :</label>
       <select id="rating" v-model="form.note" required>
-        <option  value="" disabled>Sélectionnez une note</option>
+        <option value="" disabled>Sélectionnez une note</option>
         <option class="rate" :value="1">★☆☆☆☆</option>
         <option class="rate" :value="2">★★☆☆☆</option>
         <option class="rate" :value="3">★★★☆☆</option>
@@ -12,10 +12,10 @@
       </select>
 
       <label for="commentaire">Commentaire</label>
-      <textarea 
-        id="commentaire" 
-        placeholder="Ecrivez votre commentaire ici" 
-        v-model="form.comment" 
+      <textarea
+        id="commentaire"
+        placeholder="Ecrivez votre commentaire ici"
+        v-model="form.comment"
         required
       ></textarea>
 
@@ -36,47 +36,47 @@ export default {
         bookId: null, // On le remplira dans la méthode
         note: '',
       },
-      comments: []
+      comments: [],
     }
   },
   methods: {
     async submitComment() {
       // ÉTAPE CRUCIALE : On s'assure que le commentaire est lié au bon livre
-      this.form.bookId = Number(this.id); 
-      
+      this.form.bookId = Number(this.id)
+
       try {
         const response = await fetch('http://localhost:3000/comments', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify(this.form)
-        });
+          body: JSON.stringify(this.form),
+        })
 
         if (response.ok) {
-          const createdComment = await response.json();
-          
+          const createdComment = await response.json()
+
           // Reset du formulaire
-          this.form.comment = "";
-          this.form.note = "";
+          this.form.comment = ''
+          this.form.note = ''
           this.$router.push(`/book/${this.id}`)
-          
+
           // Optionnel : rediriger l'utilisateur ou rafraîchir la liste
         } else {
-          alert("Erreur serveur : " + response.status);
+          alert('Erreur serveur : ' + response.status)
         }
       } catch (error) {
-        console.error("Erreur réseau :", error);
+        console.error('Erreur réseau :', error)
       }
-    }
+    },
   },
 }
 </script>
 
 <style scoped>
 /* Centrage vertical et horizontal sur toute la page */
-.rate  {
-    color:#ffcc00
+.rate {
+  color: #ffcc00;
 }
 .container-center {
   display: flex;
@@ -154,7 +154,9 @@ textarea.large-input {
   font-weight: bold;
   cursor: pointer;
   border-radius: 12px;
-  transition: background 0.3s, transform 0.2s;
+  transition:
+    background 0.3s,
+    transform 0.2s;
 }
 
 .save-btn:hover {

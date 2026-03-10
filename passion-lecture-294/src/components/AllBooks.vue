@@ -31,14 +31,15 @@
             {{ author.firstName }} {{ author.lastName }}
           </a>
 
-          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId"
-            >@{{ user.pseudo }}
-
+          <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">
+            <RouterLink :to="`/user/${user.id}`"
+              ><a>@{{ user.pseudo }}</a>
+            </RouterLink>
             <div v-show="user.role == 'admin'">
               <RouterLink :to="`/book/${book.id}/editbook`">
                 <img src="../assets/pinceau.png" />
               </RouterLink>
-              <img src="../assets/poubelle.png" @click="deleteBook(book.id)" />
+              <img src="../assets/poubelle.png" />
             </div>
           </a>
         </div>
@@ -94,26 +95,6 @@ export default {
     async loadUsers() {
       const response = await fetch('http://localhost:3000/users')
       this.users = await response.json()
-    },
-
-    async deleteBook(id) {
-      //demandé si l'utilisateur est sur
-      if (confirm('Es-tu sûr de vouloir supprimer ce livre ?')) {
-        try {
-          const response = await fetch(`http://localhost:3000/books/${id}`, {
-            method: 'DELETE',
-          })
-
-          if (response.ok) {
-            //Rafraichir books
-            this.$router.push('/allbooks')
-          } else {
-            alert('Erreur lors de la suppression sur le serveur.')
-          }
-        } catch (error) {
-          alert('Impossible de contacter le serveur.')
-        }
-      }
     },
   },
 }

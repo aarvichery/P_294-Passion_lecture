@@ -471,6 +471,19 @@
       "resume": "L'obsession de Jay Gatsby pour la belle Daisy Buchanan dans le luxe des années folles.",
       "userId": 4,
       "id": 20
+    },
+    {
+      "title": "nfgjhfjkghfkd",
+      "categorieId": 5,
+      "authorId": 1,
+      "editeur": "dfdsfsfssfsf",
+      "nbPage": 2456,
+      "anneeEdition": 1879,
+      "image": "/livres/livres.png",
+      "link": "/pdf/chroniques-mars.pdf",
+      "resume": "hjkdjkfhgdjksfhsjkdfds",
+      "userId": 1,
+      "id": 21
     }
   ],
   "comments": [
@@ -690,6 +703,20 @@
       "userId": 1,
       "bookId": 3,
       "note": 2
+    },
+    {
+      "id": 32,
+      "comment": "C'etait moyen",
+      "userId": 1,
+      "bookId": 5,
+      "note": 2
+    },
+    {
+      "id": 33,
+      "comment": "k",
+      "userId": 1,
+      "bookId": 19,
+      "note": 1
     }
   ]
 }
