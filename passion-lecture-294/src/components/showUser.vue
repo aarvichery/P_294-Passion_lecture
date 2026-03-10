@@ -61,6 +61,25 @@ export default {
       const livresDeLutilisateur = this.books.filter((book) => book.userId == user.id)
       return livresDeLutilisateur.length
     },
+    async deleteUser(id) {
+      //demandé si l'utilisateur est sur
+      if (confirm('Es-tu sûr de vouloir supprimer cet utilisateur ?')) {
+        try {
+          const response = await fetch(`http://localhost:3000/users/${id}`, {
+            method: 'DELETE',
+          })
+
+          if (response.ok) {
+            //Rafraichir books
+            this.$router.push('/allbooks')
+          } else {
+            alert('Erreur lors de la suppression sur le serveur.')
+          }
+        } catch (error) {
+          alert('Impossible de contacter le serveur.')
+        }
+      }
+    },
   },
 }
 </script>
