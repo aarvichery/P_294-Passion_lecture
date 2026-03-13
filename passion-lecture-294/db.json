@@ -35,108 +35,6 @@
   ],
   "authors": [
     {
-      "id": 1,
-      "firstName": "Jean",
-      "lastName": "Dupont"
-    },
-    {
-      "id": 2,
-      "firstName": "Sophie",
-      "lastName": "Martin"
-    },
-    {
-      "id": 3,
-      "firstName": "Marc",
-      "lastName": "Leclerc"
-    },
-    {
-      "id": 4,
-      "firstName": "Aiko",
-      "lastName": "Tanaka"
-    },
-    {
-      "id": 5,
-      "firstName": "Claire",
-      "lastName": "Bernard"
-    },
-    {
-      "id": 6,
-      "firstName": "Lucas",
-      "lastName": "Meyer"
-    },
-    {
-      "id": 7,
-      "firstName": "Alan",
-      "lastName": "Turing-Fils"
-    },
-    {
-      "id": 8,
-      "firstName": "Isaac",
-      "lastName": "Asimov Jr"
-    },
-    {
-      "id": 9,
-      "firstName": "Kenji",
-      "lastName": "Yamamoto"
-    },
-    {
-      "id": 10,
-      "firstName": "Agatha",
-      "lastName": "West"
-    },
-    {
-      "id": 11,
-      "firstName": "Hélène",
-      "lastName": "Trace"
-    },
-    {
-      "id": 12,
-      "firstName": "Emilie",
-      "lastName": "Blanc"
-    },
-    {
-      "id": 13,
-      "firstName": "Thomas",
-      "lastName": "Bruit"
-    },
-    {
-      "id": 14,
-      "firstName": "Léa",
-      "lastName": "Petit"
-    },
-    {
-      "id": 15,
-      "firstName": "George",
-      "lastName": "Orwell"
-    },
-    {
-      "id": 16,
-      "firstName": "Anthony",
-      "lastName": "Burgess"
-    },
-    {
-      "id": 17,
-      "firstName": "Sylvia",
-      "lastName": "Plath"
-    },
-    {
-      "id": 18,
-      "firstName": "F. Scott",
-      "lastName": "Fitzgerald"
-    },
-    {
-      "id": 19,
-      "firstName": "Michael",
-      "lastName": "Crichton"
-    },
-    {
-      "id": 20,
-      "fisrtname": "",
-      "lastname": "",
-      "firstName": "Aaron",
-      "lastName": "Vichery"
-    },
-    {
       "id": 21,
       "fisrtname": "",
       "lastname": "",
@@ -144,39 +42,67 @@
       "lastName": "Hugo"
     },
     {
-      "id": 22,
+      "id": 28,
       "fisrtname": "",
       "lastname": "",
-      "firstName": "Elias",
-      "lastName": "Veya"
+      "firstName": "Albert",
+      "lastName": "Camus"
     },
     {
-      "id": 23,
+      "id": 46,
       "fisrtname": "",
       "lastname": "",
-      "firstName": "Alia",
-      "lastName": "rened"
+      "firstName": "Eichiro",
+      "lastName": "Oda"
     },
     {
-      "id": 24,
+      "id": 47,
       "fisrtname": "",
       "lastname": "",
-      "firstName": "s",
-      "lastName": "sa"
+      "firstName": "René",
+      "lastName": "Goscinny"
     },
     {
-      "id": 25,
+      "id": 48,
       "fisrtname": "",
       "lastname": "",
-      "firstName": "Mathieu",
-      "lastName": "Heuer"
+      "firstName": "George",
+      "lastName": "Orwell"
     },
     {
-      "id": 26,
+      "id": 49,
       "fisrtname": "",
       "lastname": "",
-      "firstName": "l",
-      "lastName": "m"
+      "firstName": "Antoine",
+      "lastName": "De Saint-Exupery"
+    },
+    {
+      "id": 50,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "Masashi",
+      "lastName": "Kishimoto"
+    },
+    {
+      "id": 51,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "Marjane",
+      "lastName": "Satrapi"
+    },
+    {
+      "id": 52,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "Guy",
+      "lastName": "De Maupassant"
+    },
+    {
+      "id": 53,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "Hajime",
+      "lastName": "Isayama"
     }
   ],
   "users": [
@@ -219,96 +145,9 @@
       "password": "loupe_et_pipe",
       "dateEntree": "2024-02-28",
       "role": "admin"
-    },
-    {
-      "id": 8,
-      "firstname": "Aaron",
-      "lastname": "Vichery",
-      "email": "l@l.com",
-      "password": "123456787542",
-      "dateEntree": "2026-03-04",
-      "role": "admin"
     }
   ],
   "books": [
-    {
-      "id": 1,
-      "title": "Les Mystères de l’Univers",
-      "categorieId": 1,
-      "authorId": 1,
-      "editeur": "Editions Savoir",
-      "nbPage": 320,
-      "anneeEdition": 2018,
-      "image": "/livres/livres.png",
-      "link": "/pdf/mysteres-univers.pdf",
-      "resume": "Exploration des grandes questions du cosmos, des trous noirs à la matière noire.",
-      "userId": 1
-    },
-    {
-      "id": 8,
-      "title": "Nébuleuse Zéro",
-      "categorieId": 2,
-      "authorId": 8,
-      "editeur": "Galaxie Editions",
-      "nbPage": 520,
-      "anneeEdition": 2024,
-      "image": "/livres/livres.png",
-      "link": "/pdf/nebuleuse-zero.pdf",
-      "resume": "Une station spatiale abandonnée défie les lois de la physique humaine.",
-      "userId": 5
-    },
-    {
-      "id": 10,
-      "title": "Le Secret de la Falaise",
-      "categorieId": 6,
-      "authorId": 10,
-      "editeur": "Noir Profond",
-      "nbPage": 310,
-      "anneeEdition": 2023,
-      "image": "/livres/livres.png",
-      "link": "/pdf/secret-falaise.pdf",
-      "resume": "Enquête bretonne sur une mort suspecte que tout le village veut oublier.",
-      "userId": 7
-    },
-    {
-      "id": 12,
-      "title": "L'Hiver des Roses",
-      "categorieId": 4,
-      "authorId": 12,
-      "editeur": "Romanesque Editions",
-      "nbPage": 420,
-      "anneeEdition": 2015,
-      "image": "/livres/livres.png",
-      "link": "/pdf/hiver-roses.pdf",
-      "resume": "Une romance tragique au cœur des Années Folles parisiennes.",
-      "userId": 1
-    },
-    {
-      "title": "Jurassic Park",
-      "categorieId": 4,
-      "authorId": 19,
-      "editeur": "Alfred A. Knopf",
-      "nbPage": 448,
-      "anneeEdition": 1990,
-      "image": "/livres/jurassicPark.png",
-      "link": "https://cdn.bookey.app/files/pdf/book/fr/le-petit-prince.pdf",
-      "resume": "Des scientifiques parviennent à ramener des dinosaures à la vie grâce à l'ADN fossilisé. Mais lors d'une visite de contrôle sur l'île d'Isla Nublar, le système de sécurité flanche et les prédateurs reprennent leurs droits.",
-      "userId": 1,
-      "id": 16
-    },
-    {
-      "title": "Orange Mécanique",
-      "categorieId": 4,
-      "authorId": 16,
-      "editeur": "MaFami",
-      "nbPage": 212,
-      "anneeEdition": 1962,
-      "image": "/livres/orangeMechanique.png",
-      "link": "https://cdn.bookey.app/files/pdf/book/fr/le-petit-prince.pdf",
-      "resume": "Une exploration de la nature du mal et du libre arbitre à travers les yeux d'Alex.",
-      "userId": 1,
-      "id": 18
-    },
     {
       "title": "Notre Dame de Paris",
       "categorieId": 4,
@@ -321,64 +160,124 @@
       "resume": "À Paris, en 1482, la belle gitane Esmeralda fait battre le cœur de tous. Mais son destin bascule lorsqu'elle croise celui de Claude Frollo, l'archidiacre torturé, et de Quasimodo, le sonneur de cloches bossu et difforme de la cathédrale. Entre passion, trahison et injustice, la cathédrale Notre-Dame devient le théâtre d'une tragédie où le destin (l'Ananké) finit par broyer chacun des protagonistes.",
       "userId": 1,
       "id": 19
+    },
+    {
+      "title": "L'étranger",
+      "categorieId": 4,
+      "authorId": 27,
+      "editeur": "Folio",
+      "nbPage": 160,
+      "anneeEdition": 1942,
+      "image": "/livres/Letranger.png",
+      "link": "https://www.anthropomada.com/bibliotheque/CAMUS-Letranger.pdf",
+      "resume": "Meursault, un employé de bureau vivant à Alger, apprend la mort de sa mère avec une apparente indifférence. Peu après, il tue un Arabe sur une plage sans motif clair, sous l'effet du soleil. Son procès ne porte pas tant sur le crime lui-même que sur son manque de sentiments et son refus de mentir aux conventions sociales, le menant à une condamnation à mort pour son \"insensibilité\".",
+      "userId": 1,
+      "id": 20
+    },
+    {
+      "title": "One Piece (T.1)",
+      "categorieId": 5,
+      "authorId": 46,
+      "editeur": "Glénat",
+      "nbPage": 208,
+      "anneeEdition": 1997,
+      "image": "/livres/onePiece.png",
+      "link": "https://fr.scribd.com/document/449518448/One-Piece-01-EIICHIRO-ODA",
+      "resume": "Monkey D. Luffy, un jeune garçon dont le corps est devenu élastique après avoir mangé un \"Fruit du Démon\", rêve de devenir le Roi des Pirates en trouvant le trésor légendaire, le One Piece. Il quitte son village natal et commence à recruter ses premiers alliés. Il fait la rencontre de Zoro Roronoa, un redoutable chasseur de pirates maniant trois sabres, qu'il sauve de l'exécution par la Marine. Ensemble, ils décident de prendre la mer pour affronter les dangers de Grand Line.",
+      "userId": 5,
+      "id": 21
+    },
+    {
+      "title": "Astérix le Gaulois",
+      "categorieId": 3,
+      "authorId": 47,
+      "editeur": "Hachette",
+      "nbPage": 376,
+      "anneeEdition": 1961,
+      "image": "/livres/Asterix.png",
+      "link": "https://fr.scribd.com/document/372853100/Rene-Goscinny-Asterix-Le-Gaulois-French-2005-pdf",
+      "resume": "En 50 avant J.C., toute la Gaule est occupée par les Romains... Toute ? Non ! Un petit village d'irréductibles Gaulois résiste encore et toujours à l'envahisseur. Le centurion Caius Bonus, chef du camp retranché de Petibonum, veut découvrir le secret de leur force surhumaine. Il fait enlever Panoramix, le druide, pour obtenir la recette de la célèbre potion magique. Astérix s'introduit dans le camp pour le sauver. Ensemble, ils décident de jouer un tour malicieux aux Romains en leur préparant une potion aux effets très... surprenants.",
+      "userId": 5,
+      "id": 22
+    },
+    {
+      "title": "1984",
+      "categorieId": 4,
+      "authorId": 48,
+      "editeur": "Gallimard",
+      "nbPage": 376,
+      "anneeEdition": 1949,
+      "image": "/livres/1984.png",
+      "link": "https://ww2.ac-poitiers.fr/histoire-arts/sites/histoire-arts/IMG/pdf/extrait_1984_Orwell.pdf",
+      "resume": "Dans un futur dystopique, le monde est divisé en trois blocs en guerre perpétuelle. À Londres, Winston Smith travaille au Ministère de la Vérité, où il réécrit l'Histoire pour servir la propagande du Parti. Sous l'œil omniprésent de \"Big Brother\", chaque geste et chaque pensée sont surveillés par la Police de la Pensée. Winston tente de se rebeller en entamant une liaison interdite avec Julia et en cherchant à rejoindre la résistance. Mais dans ce régime où la liberté est présentée comme un esclavage, la trahison et le lavage de cerveau ne sont jamais loin.",
+      "userId": 5,
+      "id": 23
+    },
+    {
+      "title": "Le Petit Prince",
+      "categorieId": 7,
+      "authorId": 49,
+      "editeur": "Gallimard",
+      "nbPage": 93,
+      "anneeEdition": 1943,
+      "image": "/livres/petitPrince.png",
+      "link": "https://uploads.teachablecdn.com/attachments/hM28KiJPSxKLbNbX7ohm_7-petitprince.pdf",
+      "resume": "Le Petit Prince : Après un crash dans le désert du Sahara, un aviateur rencontre un jeune garçon venu d'une petite planète appelée l'astéroïde B 612. À travers le récit de ses voyages sur différentes planètes et sa rencontre avec des personnages étranges (un roi, un vaniteux, un renard...), le Petit Prince partage sa vision pure et innocente du monde. C'est une fable philosophique qui nous rappelle que « l'essentiel est invisible pour les yeux » et que les grandes personnes oublient trop souvent qu'elles ont été des enfants.",
+      "userId": 6,
+      "id": 24
+    },
+    {
+      "title": "Naruto (T.1)",
+      "categorieId": 5,
+      "authorId": 50,
+      "editeur": "Kana",
+      "nbPage": 192,
+      "anneeEdition": 1999,
+      "image": "/livres/naruto.png",
+      "link": "https://fr.scribd.com/document/3686431/Tome-01",
+      "resume": "Dans le village caché de Konoha, Naruto Uzumaki est un jeune orphelin farceur et rejeté par tous. Il ignore qu'il porte en lui le Démon Renard à Neuf Queues, scellé par le quatrième Hokage douze ans plus tôt. Bien qu'il soit le cancre de l'académie ninja, Naruto rêve de devenir \"Hokage\", le chef du village, pour enfin obtenir la reconnaissance de ses pairs. Après avoir appris une technique interdite pour sauver son maître Iruka, il obtient son diplôme et intègre l'équipe 7 aux côtés de son rival Sasuke et de la jeune Sakura, sous la direction de l'énigmatique Kakashi Hatake.",
+      "userId": 6,
+      "id": 25
+    },
+    {
+      "title": "Persépolis",
+      "categorieId": 3,
+      "authorId": 51,
+      "editeur": "L'association",
+      "nbPage": 352,
+      "anneeEdition": 2000,
+      "image": "/livres/Persépolis.png",
+      "link": "https://fr.scribd.com/doc/288106932/Persepolis-BD-Francais",
+      "resume": "Dans ce récit autobiographique en bande dessinée, Marjane Satrapi raconte son enfance et sa jeunesse à Téhéran pendant la révolution islamique. À travers les yeux d'une petite fille révoltée et pleine d'esprit, on découvre la chute du Shah, l'instauration de la République islamique et les ravages de la guerre contre l'Irak. Entre désir de liberté, exil en Europe et quête d'identité, Marjane dépeint avec humour et émotion son combat pour rester elle-même dans un monde qui change brutalement.",
+      "userId": 7,
+      "id": 26
+    },
+    {
+      "title": "Le Horla",
+      "categorieId": 4,
+      "authorId": 52,
+      "editeur": "Ollendorff",
+      "nbPage": 110,
+      "anneeEdition": 1897,
+      "image": "/livres/leHorla.png",
+      "link": "http://maupassant.free.fr/pdf/horla.pdf",
+      "resume": "À travers son journal intime, un homme raconte l'angoisse qui s'empare de lui. Il sent une présence invisible et malveillante dans sa propre maison, un être qu'il finit par nommer « Le Horla ». Cette créature semble boire son lait la nuit et prendre peu à peu le contrôle de sa volonté. Est-il victime d'un parasite d'un nouveau genre venu d'ailleurs, ou sombre-t-il lentement dans la folie ? Entre paranoïa et phénomènes inexpliqués, le narrateur tente désespérément de se débarrasser de cette entité invisible, jusqu'à commettre l'irréparable.",
+      "userId": 7,
+      "id": 27
+    },
+    {
+      "title": "L'attaque des Titans",
+      "categorieId": 5,
+      "authorId": 53,
+      "editeur": "Pika Edition",
+      "nbPage": 192,
+      "anneeEdition": 2009,
+      "image": "/livres/attaqueDesTitans.png",
+      "link": "https://fr.scribd.com/document/967885340/L-Attaque-des-Titans",
+      "resume": "Dans un monde ravagé par des titans, des géants mangeurs d'hommes, l'humanité vit retranchée derrière trois murs immenses : Maria, Rose et Sina. Après un siècle de paix, un titan colossal apparaît et brise le premier mur, laissant place à un massacre. Eren Jäger, un jeune garçon qui a vu sa mère se faire dévorer sous ses yeux, jure d'exterminer jusqu'au dernier des Titans. Avec ses amis d'enfance Mikasa et Armin, il s'engage dans l'armée pour intégrer le Bataillon d'exploration, l'unité d'élite qui combat ces monstres en dehors des murs.",
+      "userId": 5,
+      "id": 28
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "comment": "Un classique absolu, à lire au moins une fois.",
-      "userId": 1,
-      "bookId": 1,
-      "note": 5
-    },
-    {
-      "id": 15,
-      "comment": "Une aventure épique !",
-      "userId": 1,
-      "bookId": 8,
-      "note": 4
-    },
-    {
-      "id": 19,
-      "comment": "Un rythme haletant du début à la fin.",
-      "userId": 5,
-      "bookId": 10,
-      "note": 5
-    },
-    {
-      "id": 20,
-      "comment": "La traduction laisse à désirer.",
-      "userId": 6,
-      "bookId": 10,
-      "note": 3
-    },
-    {
-      "id": 21,
-      "comment": "Indispensable dans sa bibliothèque.",
-      "userId": 7,
-      "bookId": 11,
-      "note": 5
-    },
-    {
-      "id": 22,
-      "comment": "Un bon moment de détente.",
-      "userId": 1,
-      "bookId": 11,
-      "note": 4
-    },
-    {
-      "id": 26,
-      "comment": "J'ai pleuré à la fin.",
-      "userId": 5,
-      "bookId": 13,
-      "note": 5
-    },
-    {
-      "id": 35,
-      "comment": "Bien\n",
-      "userId": 1,
-      "bookId": 16,
-      "note": 4
-    }
-  ]
+  "comments": []
 }

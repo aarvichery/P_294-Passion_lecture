@@ -30,10 +30,18 @@ export default {
         fisrtname: '',
         lastname: '',
       },
-      comments: []
+      authors: []
     }
   },
+  async mounted() {
+    // Cette fonction s'exécute automatiquement dès que le composant est affiché
+    this.fetchAuthors();
+  },
   methods: {
+    async fetchAuthors() {
+      const res = await fetch('http://localhost:3000/authors');
+      this.authors = await res.json();},
+
     async submitAuthor() { 
       
       try {
@@ -46,9 +54,10 @@ export default {
         });
 
         if (response.ok) {
-          const createdComment = await response.json();
+          const createdAuthor = await response.json();
           
           // Reset du formulaire
+          this.authors.push(createdAuthor);
           this.form.firstName = "";
           this.form.lastName = "";
           this.$router.push(`/addbooks`)
