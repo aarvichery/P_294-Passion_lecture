@@ -18,15 +18,24 @@ import { RouterLink, RouterView } from 'vue-router'
           </div>
 
           <RouterLink to="/signup">
-            <img alt="User icon" class="logo" src="@/assets/utilisateur.png" width="125" height="125"
-          />
+            <img
+              alt="User icon"
+              class="logo"
+              src="@/assets/utilisateur.png"
+              width="125"
+              height="125"
+            />
           </RouterLink>
         </nav>
       </div>
     </header>
 
     <main class="content">
-      <RouterView />
+      <router-view v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
     </main>
 
     <footer class="main-footer">

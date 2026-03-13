@@ -135,6 +135,48 @@
       "lastname": "",
       "firstName": "Aaron",
       "lastName": "Vichery"
+    },
+    {
+      "id": 21,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "Victor",
+      "lastName": "Hugo"
+    },
+    {
+      "id": 22,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "Elias",
+      "lastName": "Veya"
+    },
+    {
+      "id": 23,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "Alia",
+      "lastName": "rened"
+    },
+    {
+      "id": 24,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "s",
+      "lastName": "sa"
+    },
+    {
+      "id": 25,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "Mathieu",
+      "lastName": "Heuer"
+    },
+    {
+      "id": 26,
+      "fisrtname": "",
+      "lastname": "",
+      "firstName": "l",
+      "lastName": "m"
     }
   ],
   "users": [
@@ -146,16 +188,6 @@
       "email": "salut@salut.ch",
       "password": "password123",
       "dateEntree": "2024-03-15",
-      "role": "admin"
-    },
-    {
-      "id": 4,
-      "pseudo": "userJohn",
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "user@salut.ch",
-      "password": "qwerty_john",
-      "dateEntree": "2022-01-01",
       "role": "admin"
     },
     {
@@ -239,19 +271,6 @@
       "userId": 7
     },
     {
-      "id": 11,
-      "title": "Le Voyage d'Icare",
-      "categorieId": 3,
-      "authorId": 11,
-      "editeur": "BD Factory",
-      "nbPage": 85,
-      "anneeEdition": 2024,
-      "image": "/livres/livres.png",
-      "link": "/pdf/voyage-icare.pdf",
-      "resume": "Réécriture graphique et onirique du célèbre mythe grec.",
-      "userId": 4
-    },
-    {
       "id": 12,
       "title": "L'Hiver des Roses",
       "categorieId": 4,
@@ -263,19 +282,6 @@
       "link": "/pdf/hiver-roses.pdf",
       "resume": "Une romance tragique au cœur des Années Folles parisiennes.",
       "userId": 1
-    },
-    {
-      "id": 13,
-      "title": "Le Guide du Randonneur Lunaire",
-      "categorieId": 7,
-      "authorId": 13,
-      "editeur": "Espace Détente",
-      "nbPage": 150,
-      "anneeEdition": 2025,
-      "image": "/livres/livres.png",
-      "link": "/pdf/rando-lune.pdf",
-      "resume": "Un livre inclassable mêlant poésie et conseils de voyage sur la Lune.",
-      "userId": 4
     },
     {
       "title": "Jurassic Park",
@@ -304,17 +310,17 @@
       "id": 18
     },
     {
-      "title": "The Great Gatsby",
+      "title": "Notre Dame de Paris",
       "categorieId": 4,
-      "authorId": 18,
-      "editeur": "MaFami",
-      "nbPage": 180,
-      "anneeEdition": 1925,
-      "image": "/livres/theGreatGatsby.png",
-      "link": "https://cdn.bookey.app/files/pdf/book/fr/le-petit-prince.pdf",
-      "resume": "L'obsession de Jay Gatsby pour la belle Daisy Buchanan dans le luxe des années folles.",
-      "userId": 4,
-      "id": 20
+      "authorId": 21,
+      "editeur": "G&W Edition",
+      "nbPage": 548,
+      "anneeEdition": 1831,
+      "image": "/livres/NotreDameDeParis.png",
+      "link": "https://ebooks-bnr.com/ebooks/pdf4/hugo_notre_dame_de_paris.pdf",
+      "resume": "À Paris, en 1482, la belle gitane Esmeralda fait battre le cœur de tous. Mais son destin bascule lorsqu'elle croise celui de Claude Frollo, l'archidiacre torturé, et de Quasimodo, le sonneur de cloches bossu et difforme de la cathédrale. Entre passion, trahison et injustice, la cathédrale Notre-Dame devient le théâtre d'une tragédie où le destin (l'Ananké) finit par broyer chacun des protagonistes.",
+      "userId": 1,
+      "id": 19
     }
   ],
   "comments": [
@@ -359,13 +365,6 @@
       "userId": 1,
       "bookId": 11,
       "note": 4
-    },
-    {
-      "id": 25,
-      "comment": "Le dénouement est un peu bâclé.",
-      "userId": 4,
-      "bookId": 13,
-      "note": 3
     },
     {
       "id": 26,

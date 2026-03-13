@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <form @submit.prevent="submitComment" class="comment-form">
+    <form @submit.prevent="submitAuthor" class="comment-form">
 
       <label for="firstname">Auteur</label>
       <input 
@@ -34,7 +34,7 @@ export default {
     }
   },
   methods: {
-    async submitComment() { 
+    async submitAuthor() { 
       
       try {
         const response = await fetch('http://localhost:3000/authors', {

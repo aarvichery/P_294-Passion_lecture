@@ -107,7 +107,7 @@ p {
 .champs button {
   background-color: #4b5fa9;
   color: white;
-  border-color:#ffffff;
+  border-color: #ffffff;
   padding: 12px 40px;
   border-radius: 25px;
   font-weight: bold;
@@ -129,7 +129,7 @@ p {
   font-size: 16px;
   font-weight: 600;
   border-radius: 16px;
-  cursor: pointer;
+  cursor: texts;
   border: none; /* Important pour enlever la bordure grise par défaut */
 }
 .champs input::placeholder {
