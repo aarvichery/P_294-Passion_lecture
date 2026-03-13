@@ -279,5 +279,83 @@
       "id": 28
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "id": 1,
+      "comment": "J'ai adoré ce livre !!!!",
+      "userId": 1,
+      "bookId": 22,
+      "note": 4
+    },
+    {
+      "id": 2,
+      "comment": "Le livre était bien",
+      "userId": 1,
+      "bookId": 24,
+      "note": 3
+    },
+    {
+      "id": 3,
+      "comment": "Je n'ai pas du tout aimé le livre",
+      "userId": 5,
+      "bookId": 19,
+      "note": 1
+    },
+    {
+      "id": 4,
+      "comment": "Le livre était presque incroyable",
+      "userId": 5,
+      "bookId": 28,
+      "note": 4
+    },
+    {
+      "id": 5,
+      "comment": "Incroyable !!",
+      "userId": 5,
+      "bookId": 24,
+      "note": 5
+    },
+    {
+      "id": 6,
+      "comment": "Dès le début je n'ai pas accroché",
+      "userId": 5,
+      "bookId": 26,
+      "note": 1
+    },
+    {
+      "id": 7,
+      "comment": "Bon livre",
+      "userId": 6,
+      "bookId": 23,
+      "note": 4
+    },
+    {
+      "id": 8,
+      "comment": "C'était bien mais sans plus",
+      "userId": 6,
+      "bookId": 22,
+      "note": 2
+    },
+    {
+      "id": 9,
+      "comment": "J'ai trouvé ce livre moyen",
+      "userId": 6,
+      "bookId": 28,
+      "note": 3
+    },
+    {
+      "id": 10,
+      "comment": "Incroyable !",
+      "userId": 7,
+      "bookId": 19,
+      "note": 5
+    },
+    {
+      "id": 11,
+      "comment": "C'était un peu long à lire et pas très accrochant",
+      "userId": 7,
+      "bookId": 21,
+      "note": 2
+    }
+  ]
 }

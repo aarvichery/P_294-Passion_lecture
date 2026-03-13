@@ -32,7 +32,7 @@ export default {
       form: {
         id: '',
         comment: '',
-        userId: 1, // Assure-toi d'envoyer un ID utilisateur existant
+        userId: 7, // Assure-toi d'envoyer un ID utilisateur existant
         bookId: null, // On le remplira dans la méthode
         note: '',
       },
