@@ -278,32 +278,6 @@
       "userId": 4
     },
     {
-      "id": 14,
-      "title": "Cuisine des Mondes Parallèles",
-      "categorieId": 7,
-      "authorId": 14,
-      "editeur": "Miam Editions",
-      "nbPage": 200,
-      "anneeEdition": 2023,
-      "image": "/livres/livres.png",
-      "link": "/pdf/cuisine-multi.pdf",
-      "resume": "Recettes impossibles provenant de dimensions alternatives. Très expérimental.",
-      "userId": 5
-    },
-    {
-      "title": "Ryan Lauppi au pays des madeleines",
-      "categorieId": 1,
-      "authorId": 13,
-      "editeur": "MaFami",
-      "nbPage": 67,
-      "anneeEdition": 2026,
-      "image": "/livres/livres.png",
-      "link": "https://cdn.bookey.app/files/pdf/book/fr/le-petit-prince.pdf",
-      "resume": "Rien",
-      "userId": 1,
-      "id": 15
-    },
-    {
       "title": "Jurassic Park",
       "categorieId": 4,
       "authorId": 19,
@@ -341,19 +315,6 @@
       "resume": "L'obsession de Jay Gatsby pour la belle Daisy Buchanan dans le luxe des années folles.",
       "userId": 4,
       "id": 20
-    },
-    {
-      "title": "nfgjhfjkghfkd",
-      "categorieId": 5,
-      "authorId": 1,
-      "editeur": "dfdsfsfssfsf",
-      "nbPage": 2456,
-      "anneeEdition": 1879,
-      "image": "/livres/livres.png",
-      "link": "/pdf/chroniques-mars.pdf",
-      "resume": "hjkdjkfhgdjksfhsjkdfds",
-      "userId": 1,
-      "id": 21
     }
   ],
   "comments": [
@@ -365,38 +326,10 @@
       "note": 5
     },
     {
-      "id": 4,
-      "comment": "Je n'ai pas accroché à l'univers.",
-      "userId": 4,
-      "bookId": 2,
-      "note": 2
-    },
-    {
-      "id": 7,
-      "comment": "Une analyse très fine des personnages.",
-      "userId": 7,
-      "bookId": 4,
-      "note": 4
-    },
-    {
-      "id": 8,
-      "comment": "Sympa mais sans plus.",
-      "userId": 1,
-      "bookId": 4,
-      "note": 3
-    },
-    {
       "id": 15,
       "comment": "Une aventure épique !",
       "userId": 1,
       "bookId": 8,
-      "note": 4
-    },
-    {
-      "id": 18,
-      "comment": "Poétique et touchant.",
-      "userId": 4,
-      "bookId": 9,
       "note": 4
     },
     {
@@ -442,31 +375,10 @@
       "note": 5
     },
     {
-      "id": 27,
-      "comment": "Très complexe, mais gratifiant.",
-      "userId": 6,
-      "bookId": 14,
-      "note": 4
-    },
-    {
-      "id": 28,
-      "comment": "Une déception après son précédent roman.",
-      "userId": 7,
-      "bookId": 14,
-      "note": 2
-    },
-    {
-      "id": 33,
-      "comment": "k",
+      "id": 35,
+      "comment": "Bien\n",
       "userId": 1,
-      "bookId": 19,
-      "note": 1
-    },
-    {
-      "id": 34,
-      "comment": "kjk",
-      "userId": 1,
-      "bookId": 2,
+      "bookId": 16,
       "note": 4
     }
   ]
