@@ -15,9 +15,9 @@ export default class extends BaseSchema {
       table.integer('anneeEdition').notNullable()
       // table.image('image')
 
-      table.integer('user_fk').notNullable().unsigned().references('id').inTable('users').onDelete('CASCADE')
-      table.integer('category_fk').notNullable().unsigned().references('id').inTable('categories').onDelete('CASCADE')
-      table.integer('authors_fk').notNullable().unsigned().references('id').inTable('authors').onDelete('CASCADE')
+      table.integer('user_id').notNullable().unsigned().references('id').inTable('users').onDelete('CASCADE')
+      table.integer('category_id').notNullable().unsigned().references('id').inTable('categories').onDelete('CASCADE')
+      table.integer('authors_id').notNullable().unsigned().references('id').inTable('authors').onDelete('CASCADE')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
