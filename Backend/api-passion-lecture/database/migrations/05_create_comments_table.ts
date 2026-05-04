@@ -1,11 +1,16 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'categories'
+  protected tableName = 'comments'
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
+      table.string('text').notNullable()
+      table.string('appreciation').notNullable()
+
+      table.integer('user_fk').notNullable().unsigned().references('id').inTable('users').onDelete('CASCADE')
+      table.integer('book_fk').notNullable().unsigned().references('id').inTable('books').onDelete('CASCADE')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
