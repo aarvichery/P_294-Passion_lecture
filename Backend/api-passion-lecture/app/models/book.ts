@@ -11,7 +11,7 @@ export default class Book extends BaseModel {
   declare id: number
    
   @column()
-  declare titre: String
+  declare title: String
 
   @column()
   declare nbPage: Number
