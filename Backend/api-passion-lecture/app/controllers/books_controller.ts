@@ -44,6 +44,6 @@ export default class BooksController {
    */
   async destroy({ params }: HttpContext) {
     const book = await Book.findOrFail(params.id)
-    return book.delete()
+    await book.delete()
   }
 }
