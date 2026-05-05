@@ -1,5 +1,7 @@
 import Comment from '#models/comment'
 import type { HttpContext } from '@adonisjs/core/http'
+import { commentValidator } from '#validators/comment'
+
 
 export default class CommentsController {
   /**
@@ -14,10 +16,9 @@ export default class CommentsController {
    * Handle form submission for the create action
    */
   async store({ request }: HttpContext) {
-    // A FAIRE AVEC LES VALIDATEURS
-    // const {text, appreciation, userId, bookId} = await request.validateUsing()
-    // const comment = await Comment.create({text, appreciation, userId, bookId})
-    // return comment
+    const {text, appreciation, userId, bookId} = await request.validateUsing(commentValidator)
+    const comment = await Comment.create({text, appreciation, userId, bookId})
+    return comment
   }
 
   /**
@@ -32,12 +33,11 @@ export default class CommentsController {
    * Handle form submission for the edit action
    */
   async update({ params, request }: HttpContext) {
-    // A FAIRE AVEC LES VALIDATEURS
-    // const {text, appreciation, userId, bookId} = await request.validateUsing()
-    // const comment = await Comment.findOrFail(params.id)
-    // comment.merge({text, appreciation, userId, bookId})
-    // await comment.save()
-    // return comment
+    const {text, appreciation, userId, bookId} = await request.validateUsing(commentValidator)
+    const comment = await Comment.findOrFail(params.id)
+    comment.merge({text, appreciation, userId, bookId})
+    await comment.save()
+    return comment
   }
 
   /**

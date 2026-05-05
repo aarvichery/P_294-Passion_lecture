@@ -1,5 +1,6 @@
 import Author from '#models/author'
 import type { HttpContext } from '@adonisjs/core/http'
+import { authorValidator } from '#validators/author';
 
 export default class AuthorsController {
   /**
@@ -14,13 +15,10 @@ export default class AuthorsController {
    * Handle form submission for the create action
    */
   async store({ request, response }: HttpContext) {
-    /* 
-    AJOUTER LE VALIDATOR APRES LE MERGE
-    const {name, firstname} = await request.validateUsing()
+    const {name, firstname} = await request.validateUsing(authorValidator)
     
    const author = await Author.create({name, firstname})
    return response.created(author)
-   */
   }
 
   /**
@@ -35,12 +33,11 @@ export default class AuthorsController {
    * Handle form submission for the edit action
    */
   async update({ params, request }: HttpContext) {
-    // A FAIRE APRES
-    // const {name, firstname} = request.validateUsing()
-    // const author = await Author.findOrFail(params.id)
-    // author.merge({name, firstname})
-    // await author.save()
-    // return author
+    const data = await request.validateUsing(authorValidator)
+    const author = await Author.findOrFail(params.id)
+    author.merge(data)
+    await author.save()
+    return author
   }
 
   /**

@@ -1,7 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Book from '#models/book'
-import { BookValidator } from '#validators/bookValidator.js'
-import { parseCommandLine } from 'typescript'
+import { bookValidator } from '#validators/book'
 
 export default class BooksController {
   /**
@@ -16,10 +15,9 @@ export default class BooksController {
    * Handle form submission for the create action
    */
   async store({ request, response }: HttpContext) {
-    // A FAIRE AVEC LES VALIDATEURS
-    // const {title, nbPage, extract, resume, editor, editionYear, userId, categoryId, authorId} = await request.validateUsing()
-    // const book = await Book.create({title, nbPage, extract, resume, editor, editionYear, userId, categoryId, authorId})
-    // return response.created(book)
+    const {title, nbPage, extract, resume, editor, editionYear, userId, categoryId, authorId} = await request.validateUsing(bookValidator)
+    const book = await Book.create({title, nbPage, extract, resume, editor, editionYear, userId, categoryId, authorId})
+    return response.created(book)
   }
 
   /**
@@ -34,12 +32,11 @@ export default class BooksController {
    * Handle form submission for the edit action
    */
   async update({ params, request }: HttpContext) {
-    // A FAIRE AVEC LES VALIDATEURS
-    // const {title, nbPage, extract, resume, editor, editionYear, userId, categoryId, authorId} = await request.validateUsing()
-    // const book = await Book.findOrFail(params.id)
-    // book.merge({title, nbPage, extract, resume, editor, editionYear, userId, categoryId, authorId})
-    // await book.save()
-    // return book
+    const {title, nbPage, extract, resume, editor, editionYear, userId, categoryId, authorId} = await request.validateUsing(bookValidator)
+    const book = await Book.findOrFail(params.id)
+    book.merge({title, nbPage, extract, resume, editor, editionYear, userId, categoryId, authorId})
+    await book.save()
+    return book
   }
 
   /**
