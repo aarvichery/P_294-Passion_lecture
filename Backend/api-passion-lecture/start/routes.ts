@@ -25,7 +25,10 @@ router.get('/', async () => {
 router
   .group(() => {
     router.resource('books', BooksController).apiOnly()
-    router.resource('categories', CategoriesController).apiOnly()
+    router.group(() => {
+      router.get('categories', [CategoriesController, 'index'])
+      router.get('categories/:id', [CategoriesController, 'show'])
+    })
     router.resource('authors', AuthorsController).apiOnly()
     router
       .group(() => {
