@@ -10,6 +10,10 @@
         />
       </li>
 
+      <li>
+        <a @click="categorieid = 0" :class="{ active: categorieid == 0 }">Toutes</a>
+      </li>
+
       <li v-for="categorie in categories" :key="categorie.id">
         <a @click="categorieid = categorie.id" :class="{ active: categorieid == categorie.id }">
           {{ categorie.name }}
@@ -28,7 +32,7 @@
           <a class="book-title">{{ book.title }}</a>
 
           <a v-for="author in authors" :key="author.id" v-show="book.authorId == author.id">
-            {{ author.firstName }} {{ author.lastName }}
+            {{ author.firstname }} {{ author.name }}
           </a>
 
           <a class="user-tag" v-for="user in users" v-show="user.id == book.userId">
@@ -39,7 +43,7 @@
               <RouterLink :to="`/book/${book.id}/editbook`">
                 <img src="../assets/pinceau.png" />
               </RouterLink>
-              <img src="../assets/poubelle.png" @click="deleteBook(book.id)" />
+              <img src="../assets/poubelle.png" @click.stop.prevent="deleteBook(book.id)" />
             </div>
           </a>
         </div>
@@ -50,78 +54,64 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      books: [],
-      categories: [],
-      authors: [],
-      users: [],
-      categorieid: 0,
-      searchQuery: '',
-    }
-  },
-  computed: {
-    filteredBooks() {
-      const query = this.searchQuery.toLowerCase()
+<script setup>
+import { ref, onMounted, computed } from 'vue'
+import bookServices from '../../Services/bookServices';
+import categorieServices from '../../Services/categorieServices';
+import authorServices from '../../Services/authorServices';
+import userServices from '../../Services/userServices';
 
-      return this.books.filter((book) => {
-        const matchSearch = book.title.toLowerCase().includes(query)
-        const matchCategory = this.categorieid === 0 || book.categorieId === this.categorieid
-        return matchSearch && matchCategory
-      })
-    },
-  },
-  mounted() {
-    this.loadBooks()
-    this.loadCategories()
-    this.loadAuthors()
-    this.loadUsers()
-  },
-  methods: {
-    async loadBooks() {
-      const response = await fetch('http://localhost:3000/books')
-      this.books = await response.json()
-    },
-    async loadCategories() {
-      const response = await fetch('http://localhost:3000/categories')
-      this.categories = await response.json()
-    },
-    async loadAuthors() {
-      const response = await fetch('http://localhost:3000/authors')
-      this.authors = await response.json()
-    },
-    async loadUsers() {
-      const response = await fetch('http://localhost:3000/users')
-      this.users = await response.json()
-    },
+const books = ref([])
+const categories = ref([])
+const authors = ref([])
+const users = ref([])
+const categorieid = ref(0)
+const searchQuery = ref('')
 
-    async deleteBook(id) {
-      //demandé si l'utilisateur est sur
-      if (confirm('Es-tu sûr de vouloir supprimer ce livre ?')) {
-        try {
-          const response = await fetch(`http://localhost:3000/books/${id}`, {
-            method: 'DELETE',
-          })
+const filteredBooks = computed(() => {
+  const query = searchQuery.value.toLowerCase()
+  
+  return books.value.filter((book) => {
+    const matchSearch = book.title.toLowerCase().includes(query)
+    const matchCategory = categorieid.value === 0 || book.categoryId == categorieid.value
+    return matchSearch && matchCategory
+  })
+})
 
-          if (response.ok) {
-            //Rafraichir books
-            this.$router.push('/allbooks')
-          } else {
-            alert('Erreur lors de la suppression sur le serveur.')
-          }
-        } catch (error) {
-          alert('Impossible de contacter le serveur.')
-        }
-      }
-    },
-  },
+const loadData = async () => {
+  try {
+    const [resBooks, resCats, resAuth, resUse ] = await Promise.all([
+      bookServices.getBooks(),
+      categorieServices.getCategories(),
+      authorServices.getAuthors(),
+      userServices.getUsers(),
+    ]);
+
+    books.value = resBooks.data
+    categories.value = resCats.data 
+    authors.value = resAuth.data
+    users.value = resUse.data
+  } catch (error) {
+    console.error("Erreur lors du chargement des données", error)
+  }
 }
+
+const deleteBook = async (id) => {
+  if (confirm('Es-tu sûr de vouloir supprimer ce livre ?')) {
+    try {
+      books.value = books.value.filter(b => b.id !== id)
+    } catch (error) {
+      alert('Erreur lors de la suppression')
+    }
+  }
+}
+
+onMounted(() => {
+  loadData()
+})
 </script>
 
 <style scoped>
-/* On nettoie la nav pour que tout soit aligné horizontalement */
 nav {
   background-color: #4b5fa9;
   padding: 15px;
@@ -155,7 +145,7 @@ nav a {
 
 nav a.active {
   text-decoration: underline;
-  color: #000000; /* Une couleur différente pour bien voir la catégorie active */
+  color: #000000; 
 }
 
 .livres {
@@ -211,9 +201,8 @@ nav a.active {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Les icônes moins grosses (Pinceau et Poubelle) */
 .infos div img {
-  width: 30px; /* Taille encore plus petite pour la discrétion */
+  width: 30px;
   height: 30px;
   cursor: pointer;
   filter: brightness(0) invert(1);
@@ -225,18 +214,10 @@ nav a.active {
   opacity: 0.7;
 }
 
-/* --- LE GROS BOUTON AJOUTER (TOUT EN BAS) --- */
-/* On cible le RouterLink qui entoure le bouton pour le forcer à aller à la ligne */
 .livres > a {
   width: 100%;
   display: flex;
   justify-content: center;
   text-decoration: none;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 50px;
-  color: #888;
 }
 </style>
