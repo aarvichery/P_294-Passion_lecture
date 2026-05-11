@@ -9,6 +9,7 @@
 
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+import UsersController from '#controllers/users_controller'
 
 const BooksController = () => import('#controllers/books_controller')
 const CategoriesController = () => import('#controllers/categories_controller')
@@ -34,6 +35,9 @@ router
       .group(() => {
         router.resource('comments', CommentsController).apiOnly()
       }).prefix("books/:book_id")
+    router.group(() => {
+      router.get('users', [UsersController, 'index'])
+    })
 
 
     router 

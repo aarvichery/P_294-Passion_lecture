@@ -8,6 +8,7 @@ export default class extends BaseSeeder {
         id: 1,
         firstname: 'Aaron',
         lastname: 'Vichery',
+        username: 'AV67',
         email: 'aaron.vichery@eduvaud.ch',
         password: 'lkasvbifbsizv45',
         role: 'Admin'
