@@ -30,31 +30,28 @@ router.get('/', async () => {
 
 router
   .group(() => {
-    router.resource('books', BooksController)
-    .apiOnly()
-    .use(['store', 'update', 'destroy'], middleware.auth())
+    router
+      .resource('books', BooksController)
+      .apiOnly()
+      .use(['store', 'update', 'destroy'], middleware.auth())
     router.group(() => {
       router.get('categories', [CategoriesController, 'index'])
       router.get('categories/:id', [CategoriesController, 'show'])
     })
-    router.resource('authors', AuthorsController)
-    .apiOnly()
-    .use(['store', 'update', 'destroy'], middleware.auth())
+    router.resource('authors', AuthorsController).apiOnly()
     router
       .group(() => {
-        router.resource('comments', CommentsController)
-        .apiOnly()
-        .use(['store', 'update', 'destroy'], middleware.auth())
+        router.resource('comments', CommentsController).apiOnly()
       })
       .prefix('books/:book_id')
-    router.group(() => {
-      router.get('users', [UsersController, 'index'])
-      router.get('users/:id', [UsersController, 'show'])
-    })
+      .use(middleware.auth())
+    router.get('comments', [CommentsController, 'index'])
+    router.get('users', [UsersController, 'index']).use(middleware.auth())
+    router.get('users/:id', [UsersController, 'show'])
     router
       .group(() => {
-        router.get('books', [BooksController, 'index']).use(middleware.auth())
-        router.get('books/:book_id', [BooksController, 'show']).use(middleware.auth())
+        router.get('books', [BooksController, 'index'])
+        router.get('books/:book_id', [BooksController, 'show'])
       })
       .prefix('users/:user_id')
 

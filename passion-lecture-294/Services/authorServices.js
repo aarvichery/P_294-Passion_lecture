@@ -1,16 +1,21 @@
-import apiClient from "./api"
+import apiClient from './api'
 
 export default {
-    getAuthors() {
-        return apiClient.get('/authors')
-    },
-    getAuthor(id) {
-        return apiClient.get(`/authors/${id}`)
-    },
-    deleteAuthor(id) {
-        return apiClient.delete(`/authors/${id}`)
-    },
-    editAuthor(id, author) {
-        return apiClient.put(`/authors/${id}`, author)
-    }
+  getAuthors() {
+    const authors = apiClient.get('/authors')
+    console.log(authors)
+    return authors
+  },
+  getAuthor(id) {
+    return apiClient.get(`/authors/${id}`)
+  },
+  addAuthor(authorData) {
+    return apiClient.post(`/authors`, authorData)
+  },
+  deleteAuthor(id) {
+    return apiClient.delete(`/authors/${id}`)
+  },
+  editAuthor(id, author) {
+    return apiClient.put(`/authors/${id}`, author)
+  },
 }
