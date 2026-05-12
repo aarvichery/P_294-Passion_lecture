@@ -1,0 +1,19 @@
+info:
+  name: Get all books of one user
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: http://localhost:3333/v1/api/users/:user_id/books
+  params:
+    - name: user_id
+      value: "1"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

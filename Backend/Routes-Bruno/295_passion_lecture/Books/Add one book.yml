@@ -1,0 +1,31 @@
+info:
+  name: Add one book
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:3333/v1/api/books
+  body:
+    type: json
+    data: |-
+      {
+              "title": "123 solcccccccccceil",
+              "nbPage": 352,
+              "extract": "https://www.renaud-bray.com/livres-jeunesse-123soleil",
+              "resume": "Le livre cccccccparle du jeu 123 soleil",
+              "editor": "editorSoleilccc",
+              "editionYear": 2015,
+              "userId": 1,
+              "categoryId": 1,
+              "authorId": 1
+            }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
