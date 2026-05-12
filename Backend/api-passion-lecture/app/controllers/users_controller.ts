@@ -9,6 +9,10 @@ export default class UsersController {
     const users = await User.query().orderBy('id')
     return users;
   }
+    async show({ params }: HttpContext) {
+      const users = await User.query().where('id', params.id).firstOrFail()
+      return users;
+    }
 
   /**
    * Show individual record

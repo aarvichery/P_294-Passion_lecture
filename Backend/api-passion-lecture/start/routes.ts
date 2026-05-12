@@ -37,6 +37,8 @@ router
       }).prefix("books/:book_id")
     router.group(() => {
       router.get('users', [UsersController, 'index'])
+      router.get('users/:id', [UsersController, 'show'])
+
     })
 
 
@@ -46,6 +48,6 @@ router
     router.post('login', [AuthController, 'login']) 
     router.post('logout', [AuthController, 'logout']).use(middleware.auth()) 
   }) 
-  .prefix('user') 
+  .prefix('users') 
   })
   .prefix('v1/api')
