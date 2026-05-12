@@ -52,6 +52,7 @@ router
     router.get('authors', [AuthorsController, 'index'])
     router
       .group(() => {
+        router.get('comments', [CommentsController, 'index'])
         router.get('comments/:id', [CommentsController, 'show'])
         router.post('comments', [CommentsController, 'store'])
         router.put('comments/:id', [CommentsController, 'update'])
