@@ -10,8 +10,6 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 import UsersController from '#controllers/users_controller'
-import Book from '#models/book'
-
 // Swagger
 
 import AutoSwagger from 'adonis-autoswagger'
@@ -39,10 +37,14 @@ router
       router.get('categories', [CategoriesController, 'index'])
       router.get('categories/:id', [CategoriesController, 'show'])
     })
-    router.resource('authors', AuthorsController).apiOnly()
+    router.resource('authors', AuthorsController)
+    .apiOnly()
+    .use(['store', 'update', 'destroy'], middleware.auth())
     router
       .group(() => {
-        router.resource('comments', CommentsController).apiOnly()
+        router.resource('comments', CommentsController)
+        .apiOnly()
+        .use(['store', 'update', 'destroy'], middleware.auth())
       })
       .prefix('books/:book_id')
     router.group(() => {
@@ -51,8 +53,8 @@ router
     })
     router
       .group(() => {
-        router.get('books', [BooksController, 'index'])
-        router.get('books/:book_id', [BooksController, 'show'])
+        router.get('books', [BooksController, 'index']).use(middleware.auth())
+        router.get('books/:book_id', [BooksController, 'show']).use(middleware.auth())
       })
       .prefix('users/:user_id')
 
@@ -63,5 +65,18 @@ router
         router.post('logout', [AuthController, 'logout']).use(middleware.auth())
       })
       .prefix('users')
+
+
+
+
   })
   .prefix('v1/api')
+
+//Swagger````````
+ router.get('swagger', async () => {
+ return AutoSwagger.default.docs(router.toJSON(), swagger)
+})
+// Renders Swagger-UI and passes YAML-output of /swagger
+router.get('v1/api/docs', async () => {
+ return AutoSwagger.default.ui('/swagger', swagger)
+})
