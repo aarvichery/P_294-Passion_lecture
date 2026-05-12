@@ -10,6 +10,7 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 import UsersController from '#controllers/users_controller'
+import Book from '#models/book'
 
 // Swagger
 
@@ -42,20 +43,25 @@ router
     router
       .group(() => {
         router.resource('comments', CommentsController).apiOnly()
-      }).prefix("books/:book_id")
+      })
+      .prefix('books/:book_id')
     router.group(() => {
       router.get('users', [UsersController, 'index'])
       router.get('users/:id', [UsersController, 'show'])
-
     })
+    router
+      .group(() => {
+        router.get('books', [BooksController, 'index'])
+        router.get('books/:book_id', [BooksController, 'show'])
+      })
+      .prefix('users/:user_id')
 
-
-    router 
-      .group(() => { 
-    router.post('register', [AuthController, 'register']) 
-    router.post('login', [AuthController, 'login']) 
-    router.post('logout', [AuthController, 'logout']).use(middleware.auth()) 
-  }) 
-  .prefix('users') 
+    router
+      .group(() => {
+        router.post('register', [AuthController, 'register'])
+        router.post('login', [AuthController, 'login'])
+        router.post('logout', [AuthController, 'logout']).use(middleware.auth())
+      })
+      .prefix('users')
   })
   .prefix('v1/api')
