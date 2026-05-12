@@ -44,7 +44,7 @@ router
     router
       .group(() => {
         router.get('books', [BooksController, 'index'])
-        router.get('books/:book_id', [BooksController, 'show'])
+        router.get('books/:id', [BooksController, 'show'])
       })
       .prefix('users/:user_id')
 
