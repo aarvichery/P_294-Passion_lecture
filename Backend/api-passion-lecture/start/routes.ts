@@ -12,6 +12,12 @@ import { middleware } from './kernel.js'
 import UsersController from '#controllers/users_controller'
 import Book from '#models/book'
 
+// Swagger
+
+import AutoSwagger from 'adonis-autoswagger'
+import swagger from '#config/swagger'
+
+//controllers
 const BooksController = () => import('#controllers/books_controller')
 const CategoriesController = () => import('#controllers/categories_controller')
 const AuthorsController = () => import('#controllers/authors_controller')
@@ -26,7 +32,9 @@ router.get('/', async () => {
 
 router
   .group(() => {
-    router.resource('books', BooksController).apiOnly()
+    router.resource('books', BooksController)
+    .apiOnly()
+    .use(['store', 'update', 'destroy'], middleware.auth())
     router.group(() => {
       router.get('categories', [CategoriesController, 'index'])
       router.get('categories/:id', [CategoriesController, 'show'])
