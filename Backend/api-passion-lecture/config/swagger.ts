@@ -2,15 +2,15 @@ import path from 'node:path'
 import url from 'node:url'
 export default {
  path: path.dirname(url.fileURLToPath(import.meta.url)) + '/../',
- title: 'Suivi des élèves API',
+ title: 'Passion lecture API',
  version: '1.0.0',
- description: 'Documentation de l’API pour le suivi des élèves',
+ description: "Documentation de l’API pour l'application passion lecture",
  tagIndex: 2,
  productionEnv: 'production', // optional
  info: {
- title: 'Suivi des élèves API',
+ title: 'Passion lecture API',
  version: '1.0.0',
- description: 'Documentation de l’API pour le suivi des élèves',
+ description: "Documentation de l’API pour l'application passion lecture",
  },
  snakeCase: true,
  debug: false, // set to true, to get some useful debug output
