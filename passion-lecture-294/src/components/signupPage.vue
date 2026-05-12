@@ -21,9 +21,10 @@ import { RouterLink, RouterView } from 'vue-router'
         </div>
 
         <div class="modal-inputs">
-          <form @submit.prevent="submitComment">
+          <form @submit.prevent="registerUser">
           <input type="text" placeholder="Name..." v-model="form.lastname" required/>
           <input type="text" placeholder="Firstname..." v-model="form.firstname" required/>
+          <input type="text" placeholder="Username..." v-model="form.username" required/>
           <input type="email" placeholder="Email..." v-model="form.email" required/>
           <input type="password" placeholder="Password..." v-model="form.password" required/>
           <button type="submit" class="modal-submit-btn">Rejoignez-nous!</button>
@@ -32,7 +33,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
         <div class="modal-footer">
           <RouterLink to="/login">
-          <a class="modal-login-text">Se connecter...</a>
+            <a class="modal-login-text">Se connecter...</a>
           </RouterLink>
       </div>
     </div>
@@ -41,6 +42,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <script>
+import authServices from '../../Services/authServices';
 export default {
   data() {
     return {
@@ -50,42 +52,23 @@ export default {
         lastname: '',
         email: '',
         password: '',
-        dateEntree: new Date().toISOString().split('T')[0],
-        role: 'admin'
+        username: '',
+        role: 'User'
 
-      },
-      comments: []
+      }
     }
   },
   methods: {
-    async submitComment() { 
-      
+    async registerUser() { 
+      console.log("Calling registerUser with form:", this.form);
       try {
-        const response = await fetch('http://localhost:3000/users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(this.form)
-        });
-
-        if (response.ok) {
-          const createdComment = await response.json();
-          
-          // Reset du formulaire
-          this.form.firstName = "";
-          this.form.lastName = "";
-          this.form.lastname = "",
-          this.form.email = "",
-          this.form.password = "",
-          this.$router.push(`/`)
-          
-          // Optionnel : rediriger l'utilisateur ou rafraîchir la liste
-        } else {
-          alert("Erreur serveur : " + response.status);
-        }
+        const response = await authServices.register(this.form);
+          this.$router.push(`/login`);
       } catch (error) {
-        console.error("Erreur réseau :", error);
+        console.error("Erreur :", error);
+        if (error.response) {
+      console.error(error.response.data)
+        }
       }
     }
   },
@@ -93,25 +76,25 @@ export default {
 </script>
 
 <style scoped>
-/* Couche qui assombrit tout l'écran en arrière-plan */
+/* Couche overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7); /* Intensité du noir transparent */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-/* Boîte principale avec bordure noire comme sur la maquette */
+/* Carte principale */
 .modal-card {
   background-color: #e8eeff;
   width: 820px;
-  height: 540px;
+  height: 580px;
   display: flex;
   border-radius: 35px;
   overflow: hidden;
@@ -119,7 +102,7 @@ export default {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Gestion de l'image de gauche */
+/* Image gauche */
 .modal-left {
   width: 55%;
   height: 100%;
@@ -131,19 +114,18 @@ export default {
   object-fit: cover;
 }
 
-/* Conteneur de droite pour les éléments du formulaire */
-/* On centre aussi la zone de l'avatar et du titre pour la cohérence */
+/* Partie droite */
 .modal-right {
   width: 45%;
   padding: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centre tout le contenu de la colonne de droite */
+  align-items: center;
+  justify-content: center;
   position: relative;
-  justify-content: center; /* Centre verticalement le bloc complet */
 }
 
-/* Bouton de fermeture X */
+/* Bouton fermer */
 .modal-close-x {
   position: absolute;
   top: 15px;
@@ -155,16 +137,17 @@ export default {
   cursor: pointer;
 }
 
+/* Titre */
 .modal-title {
   color: #4b5fa9;
   font-family: 'Times New Roman', serif;
   font-size: 48px;
   font-weight: normal;
-  margin: 0 0 10px 0;
-  align-self: center; /* Centre le titre par rapport au formulaire */
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-/* Cercle gris d'avatar */
+/* Avatar */
 .modal-avatar-zone {
   margin: 15px 0;
 }
@@ -178,47 +161,49 @@ export default {
   justify-content: center;
   align-items: center;
   font-size: 55px;
-  color: #000;
 }
 
-/* Modifie cette partie dans ton code */
+/* Inputs container */
 .modal-inputs {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 15px;
-  align-items: center; /* Aligne les enfants (inputs) au centre horizontalement */
 }
 
+/* Inputs */
 .modal-inputs input {
-  width: 85%; /* Réduit un peu la largeur pour que le centrage soit visible */
+  width: 85%;
   padding: 14px 22px;
   border-radius: 25px;
   border: 2px solid #e2e2e2;
   background-color: #eeeeee;
-  color: #555;
   font-size: 16px;
   outline: none;
-  text-align: left; /* Garde le texte à gauche à l'intérieur de l'input */
 }
 
-/* Pied de page avec bouton souligné */
+/* Bouton submit */
+.modal-submit-btn {
+  width: 100%;
+  background-color: #4b5fa9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 19px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* Footer login */
 .modal-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 15px;
-}
-
-.modal-submit-btn {
-  background-color: #4b5fa9;
-  color: white;
-  border: none;
-  padding: 12px 35px;
-  border-radius: 25px;
-  font-size: 19px;
-  cursor: pointer;
-  text-decoration: underline; /* Texte souligné comme sur l'image */
 }
 
 .modal-login-text {
