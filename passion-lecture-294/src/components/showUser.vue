@@ -1,5 +1,5 @@
 <template>
-  <div class="user-container" v-for="user in users" v-show="user.id == this.id" :key="user.id">
+  <div class="user-container" v-for="user in users" v-show="user.id == id" :key="user.id">
     <div class="user-actions" v-show="user.role === 'admin'">
       <RouterLink to="/allbooks">
         <img src="../assets/livre-ouvert.png" title="Voir mes livres" />
@@ -17,11 +17,11 @@
         <img alt="User icon" class="user-logo" src="@/assets/utilisateur.png" />
       </div>
 
-      <h1 class="user-title">{{ user.pseudo }}</h1>
+      <h1 class="user-title">{{ user.username }}</h1>
 
       <div class="user-details">
-        <p><strong>Prénom:</strong> {{ user.firstName }}</p>
-        <p><strong>Nom:</strong> {{ user.lastName }}</p>
+        <p><strong>Prénom:</strong> {{ user.firstname }}</p>
+        <p><strong>Nom:</strong> {{ user.lastname }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
         <p><strong>Rôle:</strong> {{ user.role }}</p>
         <p><strong>Livres ajoutés:</strong> {{ nbBooks(user) }}</p>
@@ -35,7 +35,11 @@
 </template>
 
 <script>
+import userServices from '../../Services/userServices';
+import bookServices from '../../Services/bookServices';
+
 export default {
+  name: 'UserDetail',
   props: ['id'],
   data() {
     return {
@@ -43,40 +47,38 @@ export default {
       users: [],
     }
   },
-  computed: {},
   mounted() {
     this.loadUsers()
     this.loadBooks()
   },
   methods: {
     async loadUsers() {
-      const response = await fetch('http://localhost:3000/users')
-      this.users = await response.json()
+      try {
+        const response = await userServices.getUsers()
+        this.users = response.data
+      } catch (error) {
+        console.error("Erreur lors du chargement des user :", error);
+      }
     },
     async loadBooks() {
-      const response = await fetch('http://localhost:3000/books')
-      this.books = await response.json()
+      try {
+        const response = await bookServices.getBooks()
+        this.books = response.data
+      } catch (error) {
+        console.error("Erreur lors du chargement des livres :", error);
+      }
     },
     nbBooks(user) {
       const livresDeLutilisateur = this.books.filter((book) => book.userId == user.id)
       return livresDeLutilisateur.length
     },
     async deleteUser(id) {
-      //demandé si l'utilisateur est sur
       if (confirm('Es-tu sûr de vouloir supprimer cet utilisateur ?')) {
         try {
-          const response = await fetch(`http://localhost:3000/users/${id}`, {
-            method: 'DELETE',
-          })
-
-          if (response.ok) {
-            //Rafraichir books
-            this.$router.push('/allbooks')
-          } else {
-            alert('Erreur lors de la suppression sur le serveur.')
-          }
+          await userServices.deleteUser(id)
+          this.$router.push('/allbooks')
         } catch (error) {
-          alert('Impossible de contacter le serveur.')
+          alert('Impossible de supprimer l’utilisateur. Serveur injoignable ou droits insuffisants.')
         }
       }
     },
@@ -88,39 +90,34 @@ export default {
 /* Conteneur des icônes (livre et poubelle) */
 .user-actions {
   display: flex;
-  flex-direction: column; /* Aligne les icônes verticalement */
+  flex-direction: column; 
   gap: 20px;
-  margin-right: 20px; /* Espace entre les icônes et la carte */
+  margin-right: 20px; 
 }
 
-/* Style commun pour les images d'action */
 .user-actions img {
   width: 50px;
   height: 50px;
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    filter 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
   padding: 10px;
   background-color: #ffffff;
   border: 3px solid #000000;
   border-radius: 15px;
-  box-shadow: 4px 4px 0px #4b5fa9; /* Ombre décalée style rétro/BD */
+  box-shadow: 4px 4px 0px #4b5fa9; 
 }
 
-/* Effet au survol */
 .user-actions img:hover {
   transform: scale(1.1);
   filter: brightness(1.1);
   background-color: #e8eeff;
 }
 
-/* Ajustement spécifique pour la poubelle (rouge discret au survol ?) */
 .user-actions img[src*='poubelle']:hover {
   border-color: #a94b4b;
   box-shadow: 4px 4px 0px #a94b4b;
 }
-/* Conteneur principal pour centrer la carte */
+
 .user-container {
   display: flex;
   justify-content: center;
@@ -129,10 +126,9 @@ export default {
   min-height: 500px;
 }
 
-/* Carte principale calquée sur .modal-card */
 .user-card {
   background-color: #e8eeff;
-  width: 450px; /* Plus petit qu'une modal car une seule colonne */
+  width: 450px; 
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -143,7 +139,6 @@ export default {
   font-family: Arial, sans-serif;
 }
 
-/* Zone de l'image (Avatar) */
 .user-avatar-zone {
   margin-bottom: 20px;
 }
@@ -157,7 +152,6 @@ export default {
   object-fit: cover;
 }
 
-/* Titre (Pseudo) calqué sur .modal-title */
 .user-title {
   color: #4b5fa9;
   font-family: 'Times New Roman', serif;
@@ -167,7 +161,6 @@ export default {
   text-transform: capitalize;
 }
 
-/* Bloc des informations (Prénom, Nom, etc.) */
 .user-details {
   width: 100%;
   display: flex;
@@ -191,7 +184,6 @@ export default {
   margin-right: 5px;
 }
 
-/* Pied de page de la carte */
 .user-footer {
   margin-top: 25px;
   border-top: 1px solid #c5d0f5;

@@ -38,7 +38,6 @@ router
       router.get('categories', [CategoriesController, 'index'])
       router.get('categories/:id', [CategoriesController, 'show'])
     })
-    router.resource('authors', AuthorsController).apiOnly()
     router
       .group(() => {
         router.get('authors/:id', [AuthorsController, 'show'])
