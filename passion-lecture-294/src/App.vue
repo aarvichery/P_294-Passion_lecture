@@ -1,5 +1,27 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { ref, watch } from 'vue'
+import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+const isLoggedIn = ref(false)
+if(!localStorage.getItem('token')) {
+  console.log("No auth token found")
+}
+watch(
+  () => route.path,
+  () => {
+    //!! parceque ... peut etre nul donc ! = true !! = False
+    isLoggedIn.value = !!localStorage.getItem('token')
+  },
+  //verifie immédiatment au lancement si false il attend forcement un changement
+  { immediate: true }
+)
+
+function logout() {
+  localStorage.removeItem('token')
+  isLoggedIn.value = false
+}
 </script>
 
 <template>
@@ -26,6 +48,15 @@ import { RouterLink, RouterView } from 'vue-router'
               height="125"
             />
           </RouterLink>
+          <img
+            v-if="isLoggedIn"
+            @click="logout"
+            alt="logout"
+            class="logo logo-logout"
+            src="@/assets/logout.png"
+            width="125"
+            height="125"
+          />
         </nav>
       </div>
     </header>

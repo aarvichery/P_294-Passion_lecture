@@ -14,16 +14,14 @@ import { RouterLink, RouterView } from 'vue-router'
           <button class="modal-close-x">×</button>
         </RouterLink>
 
-        <h2 class="modal-title">Bienvenue...</h2>
+        <h2 class="modal-title">Rebonjour!</h2>
 
-        <div class="modal-avatar-zone">
-          <div class="modal-plus-icon">+</div>
-        </div>
+       <br>
 
         <div class="modal-inputs">
-          <form @submit.prevent="submitComment">
-            <input type="email" placeholder="Email..." required />
-            <input type="password" placeholder="Password..." required />
+          <form @submit.prevent="loginUser">
+            <input type="email" placeholder="Email..." v-model="form.email" required />
+            <input type="password" placeholder="Password..." v-model="form.password" required />
             <button type="submit" class="modal-submit-btn">Rejoignez-nous!</button>
           </form>
         </div>
@@ -38,22 +36,32 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <script>
+import authServices from '../../Services/authServices';
 export default {
   data() {
     return {
       form: {
-        id: '',
-        firstname: '',
-        lastname: '',
         email: '',
         password: '',
-        dateEntree: new Date().toISOString().split('T')[0],
-        role: 'admin',
-      },
-      comments: [],
+            }
     }
   },
-  methods: {},
+  methods: {
+    async loginUser() { 
+      console.log("Calling loginUser with form:", this.form);
+      try {
+        const response = await authServices.login(this.form);
+        const token = response.data.token.token;
+        localStorage.setItem('token', token);
+        this.$router.push(`/`);
+      } catch (error) {
+        console.error("Erreur :", error);
+        if (error.response) {
+      console.error(error.response.data)
+        }
+      }
+    }
+  },
 }
 </script>
 
@@ -176,6 +184,8 @@ export default {
 }
 
 .modal-submit-btn {
+  margin-top: 2rem;
+   width: 100%;
   background-color: #4b5fa9;
   color: white;
   border: none;
