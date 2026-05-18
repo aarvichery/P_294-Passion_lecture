@@ -7,6 +7,9 @@ export default {
   getBook(id) {
     return apiClient.get(`/books/${id}`)
   },
+  createBook(book) {
+    return apiClient.post(`/books`, book)
+  },
   deleteBook(id) {
     return apiClient.delete(`/books/${id}`)
   },
