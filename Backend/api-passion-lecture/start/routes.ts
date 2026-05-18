@@ -41,12 +41,25 @@ router
     router.resource('authors', AuthorsController).apiOnly()
     router
       .group(() => {
-        router.resource('comments', CommentsController).apiOnly()
+        router.get('authors/:id', [AuthorsController, 'show'])
+        router.post('authors/', [AuthorsController, 'store'])
+        router.put('authors/:id', [AuthorsController, 'update'])
+        router.delete('authors/:id', [AuthorsController, 'destroy'])
+      })
+      .use(middleware.auth())
+    router.get('authors', [AuthorsController, 'index'])
+    router
+      .group(() => {
+        router.get('comments', [CommentsController, 'index'])
+        router.get('comments/:id', [CommentsController, 'show'])
+        router.post('comments', [CommentsController, 'store'])
+        router.put('comments/:id', [CommentsController, 'update'])
+        router.delete('comments/:id', [CommentsController, 'destroy'])
       })
       .prefix('books/:book_id')
       .use(middleware.auth())
     router.get('comments', [CommentsController, 'index'])
-    router.get('users', [UsersController, 'index']).use(middleware.auth())
+    router.get('users', [UsersController, 'index'])
     router.get('users/:id', [UsersController, 'show'])
     router
       .group(() => {

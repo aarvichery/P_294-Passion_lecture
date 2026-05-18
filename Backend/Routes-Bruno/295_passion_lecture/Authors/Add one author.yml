@@ -1,0 +1,24 @@
+info:
+  name: Add one author
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:3333/v1/api/authors
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Veya",
+        "firstname": "Elias"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,21 @@
+info:
+  name: Delete one author
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: http://localhost:3333/v1/api/authors/:id
+  params:
+    - name: id
+      value: "2"
+      type: path
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

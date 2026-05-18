@@ -1,0 +1,30 @@
+info:
+  name: Add one comment for one book
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://localhost:3333/v1/api/books/:book_id/comments
+  params:
+    - name: book_id
+      value: "1"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "text": "acquis",
+        "appreciation": 5,
+        "userId": 1,
+        "bookId": 1
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
