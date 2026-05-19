@@ -62,8 +62,7 @@ export default {
         this.$router.push(`/`);
       } catch (error) {
         console.error("Erreur :", error);
-        this.displayError = true;
-        this.errorMessage = " Email ou mot de passe érroné.";
+        if (error.response) {
       console.error(error.response.data)
         }
       }

@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <form @submit.prevent="submitAuthor" class="comment-form">
+    <form @submit.prevent="createAuthor" class="comment-form">
 
       <label for="firstname">Auteur</label>
       <input 
@@ -22,56 +22,48 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      form: {
+import authorServices from '../../Services/authorServices'
+
+      const form = {
         id: '',
         fisrtname: '',
-        lastname: '',
-      },
-      authors: []
-    }
-  },
-  async mounted() {
-    // Cette fonction s'exécute automatiquement dès que le composant est affiché
-    this.fetchAuthors();
-  },
-  methods: {
-    async fetchAuthors() {
-      const res = await fetch('http://localhost:3000/authors');
-      this.authors = await res.json();},
+        name: '',
+      }
 
-    async submitAuthor() { 
-      
+      const hasAccess = ref(false)
+
+    const createAuthor = async () => {
+      if (!form.value.name || !form.value.firstname) {
+        alert('Faut tout rmeplir !!')
+        return
+      }
+
       try {
-        const response = await fetch('http://localhost:3000/authors', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(this.form)
-        });
+        const response = await authorServices.createAuthor(form.value)
 
-        if (response.ok) {
-          const createdAuthor = await response.json();
-          
-          // Reset du formulaire
-          this.authors.push(createdAuthor);
-          this.form.firstName = "";
-          this.form.lastName = "";
-          this.$router.push(`/addbooks`)
-          
-          // Optionnel : rediriger l'utilisateur ou rafraîchir la liste
-        } else {
-          alert("Erreur serveur : " + response.status);
+        if (response.status === 200 || response.status === 201) {
+          alert('Auteur enregistré avec succès !')
+          router.push("/addbooks")
         }
+        return response
       } catch (error) {
-        console.error("Erreur réseau :", error);
+        console.log(form.value)
+        console.error("Erreur lors de l'envoi :", error)
+        alert("Impossible d'enregistrer l'auteur via le service.")
       }
     }
-  },
-}
+
+    onMounted(() => {
+      const token = localStorage.getItem('token')
+
+      if(token) {
+        hasAccess.value = true
+        loadData()
+      } else {
+        alert("Veuillez vous connecter");
+        router.push("/signup");
+      }
+    })
 </script>
 
 <style scoped>
