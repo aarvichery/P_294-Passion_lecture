@@ -20,15 +20,15 @@ const hasAccess = ref(false)
 
 const form = ref({
   title: '',
-  categorieId: '',
+  categoryId: '',
   authorId: '',
-  editeur: '',
+  editor: '',
   nbPage: null,
-  anneeEdition: null,
+  editionYear: null,
   // image: '',
-  link: '',
+  extract: '',
   resume: '',
-  userId: 5,
+  userId: 1, // localStorage.userId,
 })
 
 // Chargement des données au montage du composant
@@ -47,7 +47,7 @@ const loadData = async () => {
 }
 
 const handleCreateBook = async () => {
-  if (!form.value.title || !form.value.categorieId || !form.value.authorId) {
+  if (!form.value.title || !form.value.categoryId || !form.value.authorId) {
     alert('Faut tous remplir !!')
     return
   }
@@ -98,7 +98,7 @@ onMounted(() => {
 
         <div class="champs">
           <p>Catégorie :</p>
-          <select v-model="form.categorieId" required>
+          <select v-model="form.categoryId" required>
             <option value="" disabled selected hidden>Choisir une catégorie</option>
             <option
               v-for="categorie in categories"
@@ -126,12 +126,12 @@ onMounted(() => {
 
         <div class="champs">
           <p>Editeur :</p>
-          <input v-model="form.editeur" placeholder="Editeur" required />
+          <input v-model="form.editor" placeholder="Editeur" required />
         </div>
 
         <div class="champs">
           <p>Année d'édition</p>
-          <select v-model="form.anneeEdition" required>
+          <select v-model="form.editionYear" required>
             <option value="" disabled selected hidden>Année</option>
             <option v-for="year in years" :key="year" :value="year">
               {{ year }}
@@ -146,7 +146,7 @@ onMounted(() => {
 
         <div class="champs">
           <p>Lien vers extrait :</p>
-          <input v-model="form.link" placeholder="Https://monextrait.com" />
+          <input v-model="form.extract" placeholder="Https://monextrait.com" />
         </div>
 
         <!-- <div class="champs">

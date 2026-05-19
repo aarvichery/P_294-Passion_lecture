@@ -55,7 +55,6 @@ export default {
         localStorage.setItem('token', token);
         this.$router.push(`/`);
       } catch (error) {
-        console.error("Erreur :", error);
         if (error.response) {
       console.error(error.response.data)
         }
