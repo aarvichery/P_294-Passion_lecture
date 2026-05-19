@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter, RouterLink } from 'vue-router'
+import { useRouter } from 'vue-router'
 import bookServices from '../../Services/bookServices'
 import authorServices from '../../Services/authorServices'
 import categorieServices from '../../Services/categorieServices'
@@ -15,6 +15,9 @@ const years = Array.from({ length: 900 }, (v, i) => currentYear - i)
 const authors = ref([])
 const categories = ref([])
 
+// Variable pour suivre si l'utilisateur a le droit d'accéder au formulaire
+const hasAccess = ref(false)
+
 const form = ref({
   title: '',
   categorieId: '',
@@ -22,7 +25,7 @@ const form = ref({
   editeur: '',
   nbPage: null,
   anneeEdition: null,
-  image: '',
+  // image: '',
   link: '',
   resume: '',
   userId: 5,
@@ -44,11 +47,7 @@ const loadData = async () => {
 }
 
 const handleCreateBook = async () => {
-  const values = Object.values(form.value)
-
-  const isFormIncomplete = values.some((value) => value === '' || value === 0 || value === null)
-
-  if (isFormIncomplete) {
+  if (!form.value.title || !form.value.categorieId || !form.value.authorId) {
     alert('Faut tous remplir !!')
     return
   }
@@ -60,14 +59,25 @@ const handleCreateBook = async () => {
       alert('Livre enregistré avec succès !')
       router.push('/')
     }
+    router.push("/")
+    return response
+    
   } catch (error) {
-    console.error("Erreur lors de l'envoi :", error)
-    alert("Impossible d'enregistrer le livre via le service.")
+    console.log(form.value)
+      console.error("Erreur lors de l'envoi :", error)
+      alert("Impossible d'enregistrer le livre via le service.")
   }
 }
 
 onMounted(() => {
-  loadData()
+    const token = localStorage.getItem('token')
+
+  if (token) {
+    hasAccess.value = true
+    loadData()
+  } else {
+    hasAccess.value = false
+  }
 })
 </script>
 
@@ -139,10 +149,10 @@ onMounted(() => {
           <input v-model="form.link" placeholder="Https://monextrait.com" />
         </div>
 
-        <div class="champs">
+        <!-- <div class="champs">
           <p>Lien vers image :</p>
           <input v-model="form.image" placeholder="c:\inf-toolset" />
-        </div>
+        </div> -->
       </div>
     </div>
 

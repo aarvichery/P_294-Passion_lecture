@@ -20,7 +20,9 @@ watch(
 
 function logout() {
   localStorage.removeItem('token')
+  router.push("/")
   isLoggedIn.value = false
+  alert("Vous avez été déconnecté")
 }
 </script>
 
@@ -52,7 +54,7 @@ function logout() {
             v-if="isLoggedIn"
             @click="logout"
             alt="logout"
-            class="logo logo-logout"
+            class="logo-logout"
             src="@/assets/logout.png"
             width="125"
             height="125"
@@ -140,6 +142,12 @@ nav {
   width: 45px;
   height: 45px;
   margin-left: 20px;
+}
+
+.logo-logout {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
 }
 
 /* ===== FOOTER ===== */

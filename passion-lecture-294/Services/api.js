@@ -1,19 +1,24 @@
 import axios from 'axios'
+
 const apiClient = axios.create({
     baseURL: 'http://localhost:3333/v1/api',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
     },
 })
 
 apiClient.interceptors.request.use((config) => {
-    const token = localStorage.getItem('auth_token')
+    const token = localStorage.getItem('token')
+
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
     }
+
     return config
+}, (error) => {
+    return Promise.reject(error)
 })
 
 export default apiClient
