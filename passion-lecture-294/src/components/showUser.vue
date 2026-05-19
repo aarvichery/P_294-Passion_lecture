@@ -28,7 +28,13 @@
       </div>
 
       <div class="user-footer">
-        <p class="user-date">Membre depuis le : {{ user.dateEntree }}</p>
+        <p class="user-date">
+        Membre depuis le : 
+        <!--Je vais me permettre de commenter cette ligne donc je voulais m'épargner le faite de faire une fonction séparer que pour ce champ,
+        //j'ai donc fais un if else qui sois affiche la date formater dans le systeme francophone suisse sinon affiche 3 points pour indiquer que la date n'est pas encore disponible (car peut etre que le user n'est pas encore chargé)
+        -->
+        {{ user.createdAt ? new Date(user.createdAt).toLocaleDateString('fr-CH') : '...' }}
+        </p>
       </div>
     </div>
   </div>
@@ -37,6 +43,7 @@
 <script>
 import userServices from '../../Services/userServices';
 import bookServices from '../../Services/bookServices';
+
 
 export default {
   name: 'UserDetail',

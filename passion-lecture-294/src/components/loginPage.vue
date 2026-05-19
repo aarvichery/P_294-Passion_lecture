@@ -24,6 +24,9 @@ import { RouterLink, RouterView } from 'vue-router'
             <input type="password" placeholder="Password..." v-model="form.password" required />
             <button type="submit" class="modal-submit-btn">Rejoignez-nous!</button>
           </form>
+          <p v-show="displayError" style="color: red;">
+            Erreur:{{ errorMessage }}
+          </p>
         </div>
         <div class="modal-footer">
           <RouterLink to="/signup">
@@ -40,6 +43,8 @@ import authServices from '../../Services/authServices';
 export default {
   data() {
     return {
+      displayError: false,
+      errorMessage: '',
       form: {
         email: '',
         password: '',
@@ -53,16 +58,17 @@ export default {
         const response = await authServices.login(this.form);
         const token = response.data.token.token;
         localStorage.setItem('token', token);
+        localStorage.setItem('userId', response.data.id);
         this.$router.push(`/`);
       } catch (error) {
         console.error("Erreur :", error);
-        if (error.response) {
+        this.displayError = true;
+        this.errorMessage = " Email ou mot de passe érroné.";
       console.error(error.response.data)
         }
       }
     }
-  },
-}
+  }
 </script>
 
 <style scoped>

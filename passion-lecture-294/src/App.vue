@@ -5,14 +5,19 @@ import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 const isLoggedIn = ref(false)
+const userId = ref(null)
+
+
 if(!localStorage.getItem('token')) {
   console.log("No auth token found")
 }
+
 watch(
   () => route.path,
   () => {
     //!! parceque ... peut etre nul donc ! = true !! = False
     isLoggedIn.value = !!localStorage.getItem('token')
+    userId.value = localStorage.getItem('userId')
   },
   //verifie immédiatment au lancement si false il attend forcement un changement
   { immediate: true }
@@ -20,8 +25,10 @@ watch(
 
 function logout() {
   localStorage.removeItem('token')
+  localStorage.removeItem('userId')
   router.push("/")
   isLoggedIn.value = false
+  userId.value = null
   alert("Vous avez été déconnecté")
 }
 </script>
@@ -41,7 +48,7 @@ function logout() {
             <RouterLink to="/mybooks">Mes livres</RouterLink>
           </div>
 
-          <RouterLink to="/signup">
+          <RouterLink v-if="!isLoggedIn" to="/signup">
             <img
               alt="User icon"
               class="logo"
@@ -50,6 +57,16 @@ function logout() {
               height="125"
             />
           </RouterLink>
+          <RouterLink v-else :to="'/user/' + userId">
+            <img
+              alt="User icon"
+              class="logo"
+              src="@/assets/utilisateur.png"
+              width="125"
+              height="125"
+            />
+          </RouterLink>
+          
           <img
             v-if="isLoggedIn"
             @click="logout"
