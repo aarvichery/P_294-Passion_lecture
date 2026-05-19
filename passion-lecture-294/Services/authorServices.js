@@ -9,6 +9,9 @@ export default {
   getAuthor(id) {
     return apiClient.get(`/authors/${id}`)
   },
+  createBook(author) {
+    return apiClient.post(`/authors`, author)
+  },
   addAuthor(authorData) {
     return apiClient.post(`/authors`, authorData)
   },

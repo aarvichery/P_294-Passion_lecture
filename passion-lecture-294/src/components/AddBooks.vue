@@ -15,7 +15,6 @@ const years = Array.from({ length: 900 }, (v, i) => currentYear - i)
 const authors = ref([])
 const categories = ref([])
 
-// Variable pour suivre si l'utilisateur a le droit d'accéder au formulaire
 const hasAccess = ref(false)
 
 const form = ref({
@@ -31,7 +30,6 @@ const form = ref({
   userId: 1, // localStorage.userId,
 })
 
-// Chargement des données au montage du composant
 const loadData = async () => {
   try {
     const [resAuth, resCats] = await Promise.all([
