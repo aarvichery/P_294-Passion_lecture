@@ -76,7 +76,8 @@ onMounted(() => {
     hasAccess.value = true
     loadData()
   } else {
-    hasAccess.value = false
+    alert("Veuillez vous connecter");
+    router.push("/signup");
   }
 })
 </script>
